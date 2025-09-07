@@ -52,7 +52,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                   },
                 ),
               ),
-              SizedBox(height: 100.h),
+              SizedBox(height: 80.h),
               SizedBox(
                 height: 480.h,
                 child: PageView.builder(
