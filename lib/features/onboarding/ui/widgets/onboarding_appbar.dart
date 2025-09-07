@@ -16,33 +16,36 @@ class OnboardingAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        showBackButton
-            ? TextButton(
-              onPressed: backButtonOnPressed,
-              style: TextButton.styleFrom(
-                minimumSize: Size(40.w, 30.h),
-                backgroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(5.r),
+    return SizedBox(
+      height: 40.h,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          showBackButton
+              ? TextButton(
+                onPressed: backButtonOnPressed,
+                style: TextButton.styleFrom(
+                  minimumSize: Size(40.w, 30.h),
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(5.r),
+                  ),
                 ),
-              ),
-              child: Icon(
-                FontAwesomeIcons.arrowLeftLong,
-                color: ColorManager.primaryBlue,
-                size: 20.sp,
-              ),
-            )
-            : SizedBox(height: 42.h),
-        GestureDetector(
-          //TODO: implement skip
-          onTap: () {},
-          child: Text('Skip', style: Styles.font16WhiteMedium),
-        ),
-      ],
+                child: Icon(
+                  FontAwesomeIcons.arrowLeftLong,
+                  color: ColorManager.primaryBlue,
+                  size: 20.sp,
+                ),
+              )
+              : SizedBox.shrink(),
+          GestureDetector(
+            //TODO: implement skip
+            onTap: () {},
+            child: Text('Skip', style: Styles.font16WhiteMedium),
+          ),
+        ],
+      ),
     );
   }
 }
