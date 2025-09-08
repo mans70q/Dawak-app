@@ -34,7 +34,7 @@ class OtpFields extends StatelessWidget {
       onChanged: (value) {},
       onCompleted: (value) {
         // TODO: implement onCompleted
-        GoRouter.of(context).go(Routes.loginScreen);
+        GoRouter.of(context).go(Routes.resetPasswordScreen);
       },
     );
   }

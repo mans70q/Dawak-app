@@ -41,7 +41,7 @@ class VerificationForm extends StatelessWidget {
                     backgroundColor: ColorManager.primaryBlue,
                     onPressed: () {
                       // todo send reset code
-                      GoRouter.of(context).go(Routes.loginScreen);
+                      GoRouter.of(context).go(Routes.resetPasswordScreen);
                     },
                   ),
                 ),
