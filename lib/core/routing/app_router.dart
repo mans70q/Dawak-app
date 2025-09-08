@@ -1,4 +1,7 @@
 import 'package:go_router/go_router.dart';
+import 'package:spark_flutter_app/core/routing/routes.dart';
+import 'package:spark_flutter_app/features/auth/ui/login_view.dart';
+import 'package:spark_flutter_app/features/auth/ui/register_view.dart';
 import 'package:spark_flutter_app/features/onboarding/ui/onboarding_screen.dart';
 
 abstract class AppRouter {
@@ -9,6 +12,14 @@ abstract class AppRouter {
         // path: Routes.onboardingScreen,
         path: '/', // for testing purposes
         builder: (context, state) => const OnboardingScreen(),
+      ),
+      GoRoute(
+        path: Routes.loginScreen,
+        builder: (context, state) => const LoginView(),
+      ),
+      GoRoute(
+        path: Routes.registerScreen,
+        builder: (context, state) => const RegisterView(),
       ),
     ],
   );
