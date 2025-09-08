@@ -75,7 +75,10 @@ class LoginForm extends StatelessWidget {
                             Align(
                               alignment: Alignment.centerLeft,
                               child: TextButton(
-                                onPressed: () {},
+                                onPressed:
+                                    () => GoRouter.of(
+                                      context,
+                                    ).push(Routes.forgotPasswordScreen),
                                 child: Text(
                                   'Forgot Password?',
                                   style: Styles.font12BlueBold,
