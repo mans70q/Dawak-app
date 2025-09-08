@@ -8,6 +8,8 @@ class AppButton extends StatelessWidget {
   final Color? textColor;
   final Color? backgroundColor;
   final VoidCallback? onPressed;
+  final double? radius;
+  final BorderSide? borderSide;
 
   const AppButton({
     super.key,
@@ -16,6 +18,8 @@ class AppButton extends StatelessWidget {
     this.textColor,
     this.backgroundColor,
     this.onPressed,
+    this.radius,
+    this.borderSide,
   });
 
   @override
@@ -25,11 +29,12 @@ class AppButton extends StatelessWidget {
       style: TextButton.styleFrom(
         padding: EdgeInsets.zero,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(15.r),
+          borderRadius: BorderRadius.circular(radius ?? 15.r),
+          side: borderSide ?? BorderSide.none,
         ),
         backgroundColor: backgroundColor ?? ColorManager.primaryBlue,
       ),
-      child: Text(text, style: textStyle),
+      child: Text(text, style: textStyle.copyWith(color: textColor)),
     );
   }
 }

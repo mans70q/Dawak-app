@@ -8,10 +8,12 @@ class CustomTextFormField extends StatefulWidget {
     super.key,
     required this.hintText,
     this.obscureText = false, // default = false
+    this.validator, // default = null
   });
 
   final String hintText;
   final bool obscureText;
+  final String? Function(String?)? validator;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -56,10 +58,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
                 : null,
       ),
       obscureText: _isObscured,
-      validator: (value) {
-        // TODO: add validation
-        return null;
-      },
+      validator: widget.validator,
     );
   }
 }

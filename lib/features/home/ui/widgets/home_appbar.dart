@@ -1,0 +1,36 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spark_flutter_app/core/helpers/assets.dart';
+import 'package:spark_flutter_app/core/theming/styles.dart';
+
+class HomeAppbar extends StatelessWidget {
+  const HomeAppbar({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 28.h),
+      child: Row(
+        children: [
+          CircleAvatar(
+            backgroundImage: AssetImage(Assets.testAvatarImg),
+            radius: 35.r,
+          ),
+          SizedBox(width: 16.w),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text('Hello 👋', style: Styles.font14greyRegular),
+              Text('Ahmed Hassan', style: Styles.font16BlackSemiBold),
+            ],
+          ),
+          Spacer(),
+          Icon(Icons.warning_amber_rounded, color: Color(0XFFE99629), size: 28),
+          SizedBox(width: 12.w),
+          Icon(Icons.notifications_none_rounded, size: 28),
+        ],
+      ),
+    );
+  }
+}
