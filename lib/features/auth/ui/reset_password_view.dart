@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/widgets/auth_appbar.dart';
-import 'package:spark_flutter_app/features/auth/ui/widgets/verification_form.dart';
+import 'package:spark_flutter_app/features/auth/ui/widgets/reset_pass_form.dart';
 
-class VerificationView extends StatelessWidget {
-  const VerificationView({super.key});
+class ResetPasswordView extends StatelessWidget {
+  const ResetPasswordView({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +13,9 @@ class VerificationView extends StatelessWidget {
       body: Column(
         children: [
           AuthAppbar(
-            title: 'Verification',
-            subtitle: "Enter the 4-digit code we sent to your email/phone",
+            title: 'Reset Password',
+            subtitle:
+                "Create a new password to keep your medicines safe and accessible",
           ),
           Expanded(
             child: Stack(
@@ -30,7 +31,7 @@ class VerificationView extends StatelessWidget {
                       topRight: Radius.circular(20.r),
                     ),
                   ),
-                  child: VerificationForm(),
+                  child: ResetPassForm(),
                 ),
               ],
             ),
