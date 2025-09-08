@@ -6,9 +6,7 @@ import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 import 'package:spark_flutter_app/core/widgets/app_button.dart';
 import 'package:spark_flutter_app/core/widgets/handle_indicator.dart';
-import 'package:spark_flutter_app/features/auth/ui/widgets/auth_switch.dart';
 import 'package:spark_flutter_app/features/auth/ui/widgets/custom_text_form_field.dart';
-import 'package:spark_flutter_app/features/auth/ui/widgets/or_with.dart';
 
 class ForgotPassForm extends StatelessWidget {
   const ForgotPassForm({super.key});
@@ -51,6 +49,7 @@ class ForgotPassForm extends StatelessWidget {
                         backgroundColor: ColorManager.primaryBlue,
                         onPressed: () {
                           // todo send reset code
+                          GoRouter.of(context).push(Routes.verificationScreen);
                         },
                       ),
                     ),
