@@ -32,7 +32,7 @@ class LoginForm extends StatelessWidget {
             child: LayoutBuilder(
               builder: (context, constraints) {
                 return SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
+                  physics: ClampingScrollPhysics(),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
                       minHeight: constraints.maxHeight,

@@ -16,7 +16,7 @@ class ForgotPassForm extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         return SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+          physics: ClampingScrollPhysics(),
           child: ConstrainedBox(
             constraints: BoxConstraints(minHeight: constraints.maxHeight),
             child: IntrinsicHeight(
@@ -38,7 +38,6 @@ class ForgotPassForm extends StatelessWidget {
                     ),
                     SizedBox(height: 10.h),
                     CustomTextFormField(hintText: 'AH365@gmail.com'),
-
                     SizedBox(height: 20.h),
                     SizedBox(
                       width: double.infinity,

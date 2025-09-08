@@ -14,7 +14,7 @@ class VerificationForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      physics: BouncingScrollPhysics(),
+      physics: ClampingScrollPhysics(),
       child: ConstrainedBox(
         constraints: BoxConstraints(minHeight: double.maxFinite),
         child: IntrinsicHeight(

@@ -57,7 +57,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       ),
       obscureText: _isObscured,
       validator: (value) {
-        // todo: add validation
+        // TODO: add validation
         return null;
       },
     );

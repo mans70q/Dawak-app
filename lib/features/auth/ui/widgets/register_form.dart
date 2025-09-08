@@ -32,7 +32,7 @@ class RegisterForm extends StatelessWidget {
             child: LayoutBuilder(
               builder: (context, constraints) {
                 return SingleChildScrollView(
-                  physics: BouncingScrollPhysics(),
+                  physics: ClampingScrollPhysics(),
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
                       minHeight: constraints.maxHeight,
@@ -49,52 +49,84 @@ class RegisterForm extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             HandleIndicator(),
-                            SizedBox(height: 28.h),
-                            Row(
-                              children: [
-                                Expanded(
-                                  child: Text(
-                                    "First Name",
-                                    style: Styles.font16BlackMedium,
-                                  ),
-                                ),
-                                Expanded(
-                                  child: Text(
-                                    "  Last Name",
-                                    style: Styles.font16BlackMedium,
-                                  ),
-                                ),
-                              ],
-                            ),
                             SizedBox(height: 20.h),
                             Row(
                               children: [
                                 Expanded(
-                                  child: CustomTextFormField(
-                                    hintText: 'Ex: Ahmed',
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "First Name",
+                                        style: Styles.font16BlackMedium,
+                                      ),
+                                      SizedBox(height: 10.h),
+                                      CustomTextFormField(
+                                        hintText: 'Ex: Ahmed',
+                                      ),
+                                    ],
                                   ),
                                 ),
                                 SizedBox(width: 20.w),
                                 Expanded(
-                                  child: CustomTextFormField(
-                                    hintText: 'Ex: Hassan',
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Last Name",
+                                        style: Styles.font16BlackMedium,
+                                      ),
+                                      SizedBox(height: 10.h),
+                                      CustomTextFormField(
+                                        hintText: 'Ex: Hassan',
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],
                             ),
-                            SizedBox(height: 20.h),
-                            CustomTextFormField(hintText: 'Email'),
-                            SizedBox(height: 20.h),
-                            CustomTextFormField(
-                              hintText: 'Password',
-                              obscureText: true,
+                            SizedBox(height: 16.h),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Email", style: Styles.font16BlackMedium),
+                                SizedBox(height: 8.h),
+                                CustomTextFormField(hintText: 'Email'),
+                              ],
                             ),
-                            SizedBox(height: 20.h),
-                            CustomTextFormField(
-                              hintText: 'Confirm Password',
-                              obscureText: true,
+                            SizedBox(height: 16.h),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Password",
+                                  style: Styles.font16BlackMedium,
+                                ),
+                                SizedBox(height: 8.h),
+                                CustomTextFormField(
+                                  hintText: 'Password',
+                                  obscureText: true,
+                                ),
+                              ],
                             ),
-                            SizedBox(height: 20.h),
+                            SizedBox(height: 16.h),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Confirm Password",
+                                  style: Styles.font16BlackMedium,
+                                ),
+                                SizedBox(height: 8.h),
+                                CustomTextFormField(
+                                  hintText: 'Confirm Password',
+                                  obscureText: true,
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: 35.h),
                             SizedBox(
                               width: double.infinity,
                               height: 52.h,
