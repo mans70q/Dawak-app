@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:spark_flutter_app/core/helpers/validators.dart';
 import 'package:spark_flutter_app/core/routing/routes.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
@@ -34,10 +35,13 @@ class ForgotPassForm extends StatelessWidget {
                     SizedBox(height: 28.h),
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Text('Email', style: Styles.font16BlackMedium),
+                      child: Text('Email', style: Styles.font16BlackSemiBold),
                     ),
                     SizedBox(height: 10.h),
-                    CustomTextFormField(hintText: 'AH365@gmail.com'),
+                    CustomTextFormField(
+                      hintText: 'AH365@gmail.com',
+                      validator: Validator.validateEmailAddress,
+                    ),
                     SizedBox(height: 20.h),
                     SizedBox(
                       width: double.infinity,

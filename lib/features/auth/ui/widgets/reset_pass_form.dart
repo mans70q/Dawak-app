@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:spark_flutter_app/core/helpers/validators.dart';
 import 'package:spark_flutter_app/core/routing/routes.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
@@ -34,19 +35,35 @@ class ResetPassForm extends StatelessWidget {
                     SizedBox(height: 28.h),
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Text('Password', style: Styles.font16BlackMedium),
+                      child: Text(
+                        'Password',
+                        style: Styles.font16BlackSemiBold,
+                      ),
                     ),
                     SizedBox(height: 10.h),
-                    CustomTextFormField(hintText: '', obscureText: true),
-
+                    CustomTextFormField(
+                      hintText: '',
+                      obscureText: true,
+                      validator: Validator.validatePassword,
+                    ),
                     SizedBox(height: 20.h),
                     Align(
                       alignment: Alignment.centerLeft,
-                      child: Text('Password', style: Styles.font16BlackMedium),
+                      child: Text(
+                        'Password',
+                        style: Styles.font16BlackSemiBold,
+                      ),
                     ),
                     SizedBox(height: 10.h),
-                    CustomTextFormField(hintText: '', obscureText: true),
-
+                    CustomTextFormField(
+                      hintText: '',
+                      obscureText: true,
+                      validator:
+                          (value) => Validator.validateConfirmPassword(
+                            value,
+                            'originalPassword',
+                          ),
+                    ), //TODO: use the original password
                     SizedBox(height: 20.h),
                     SizedBox(
                       width: double.infinity,

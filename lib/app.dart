@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spark_flutter_app/core/routing/app_router.dart';
+import 'package:spark_flutter_app/core/theming/color_manager.dart';
 
 class SparkApp extends StatelessWidget {
   const SparkApp({super.key});
@@ -14,7 +15,13 @@ class SparkApp extends StatelessWidget {
         return MaterialApp.router(
           title: 'SPARK app',
           debugShowCheckedModeBanner: false,
-          theme: ThemeData(fontFamily: 'Roboto'),
+          theme: ThemeData(
+            fontFamily: 'Roboto',
+            scaffoldBackgroundColor: Colors.white,
+            bottomNavigationBarTheme: BottomNavigationBarThemeData(
+              backgroundColor: ColorManager.lightGrey,
+            ),
+          ),
           routerConfig: AppRouter.router,
         );
       },

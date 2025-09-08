@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Define the base directory for the home feature
-FEATURE_NAME="onboarding"
+FEATURE_NAME="home"
 BASE_DIR="lib/features/$FEATURE_NAME"
 
 # Create necessary directories

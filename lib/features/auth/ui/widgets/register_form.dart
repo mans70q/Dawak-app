@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:spark_flutter_app/core/helpers/validators.dart';
 import 'package:spark_flutter_app/core/routing/routes.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
@@ -59,11 +60,12 @@ class RegisterForm extends StatelessWidget {
                                     children: [
                                       Text(
                                         "First Name",
-                                        style: Styles.font16BlackMedium,
+                                        style: Styles.font16BlackSemiBold,
                                       ),
                                       SizedBox(height: 10.h),
                                       CustomTextFormField(
                                         hintText: 'Ex: Ahmed',
+                                        validator: Validator.validateName,
                                       ),
                                     ],
                                   ),
@@ -76,11 +78,12 @@ class RegisterForm extends StatelessWidget {
                                     children: [
                                       Text(
                                         "Last Name",
-                                        style: Styles.font16BlackMedium,
+                                        style: Styles.font16BlackSemiBold,
                                       ),
                                       SizedBox(height: 10.h),
                                       CustomTextFormField(
                                         hintText: 'Ex: Hassan',
+                                        validator: Validator.validateName,
                                       ),
                                     ],
                                   ),
@@ -91,9 +94,15 @@ class RegisterForm extends StatelessWidget {
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Email", style: Styles.font16BlackMedium),
+                                Text(
+                                  "Email",
+                                  style: Styles.font16BlackSemiBold,
+                                ),
                                 SizedBox(height: 8.h),
-                                CustomTextFormField(hintText: 'Email'),
+                                CustomTextFormField(
+                                  hintText: 'Email',
+                                  validator: Validator.validateEmailAddress,
+                                ),
                               ],
                             ),
                             SizedBox(height: 16.h),
@@ -102,12 +111,13 @@ class RegisterForm extends StatelessWidget {
                               children: [
                                 Text(
                                   "Password",
-                                  style: Styles.font16BlackMedium,
+                                  style: Styles.font16BlackSemiBold,
                                 ),
                                 SizedBox(height: 8.h),
                                 CustomTextFormField(
                                   hintText: 'Password',
                                   obscureText: true,
+                                  validator: Validator.validatePassword,
                                 ),
                               ],
                             ),
@@ -117,12 +127,18 @@ class RegisterForm extends StatelessWidget {
                               children: [
                                 Text(
                                   "Confirm Password",
-                                  style: Styles.font16BlackMedium,
+                                  style: Styles.font16BlackSemiBold,
                                 ),
                                 SizedBox(height: 8.h),
                                 CustomTextFormField(
                                   hintText: 'Confirm Password',
                                   obscureText: true,
+                                  validator:
+                                      (value) =>
+                                          Validator.validateConfirmPassword(
+                                            value,
+                                            'originalPassword',
+                                          ), //TODO: use the original password
                                 ),
                               ],
                             ),
