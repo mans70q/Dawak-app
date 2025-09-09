@@ -17,7 +17,7 @@ class AuthSwitch extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text(text, style: Styles.font12BlackRegular),
+        Text(text, style: Styles.font14BlackRegular),
         GestureDetector(
           onTap: onPressed,
           child: Text(" $buttonText", style: Styles.font12BlueBold),
