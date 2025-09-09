@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spark_flutter_app/core/helpers/assets.dart';
+import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 
 class MedicineItem extends StatelessWidget {
@@ -11,9 +12,8 @@ class MedicineItem extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Color(0XFFF7F7F7),
         borderRadius: BorderRadius.circular(15.r),
-        border: Border.all(color: Colors.black54),
+        border: Border.all(color: ColorManager.primaryBlue),
       ),
       child: Row(
         children: [

@@ -13,6 +13,7 @@ abstract class AppRouter {
   static final router = GoRouter(
     initialLocation: '/',
     routes: [
+      GoRoute(path: '/', builder: (context, state) => const MainScreen()),
       GoRoute(
         path: Routes.onboardingScreen,
         // path: '/', // for testing purposes
@@ -38,7 +39,6 @@ abstract class AppRouter {
         path: Routes.resetPasswordScreen,
         builder: (context, state) => const ResetPasswordView(),
       ),
-      GoRoute(path: '/', builder: (context, state) => const MainScreen()),
       GoRoute(
         path: Routes.warningScreen,
         builder: (context, state) => const WarningScreen(),
