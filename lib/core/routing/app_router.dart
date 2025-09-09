@@ -5,6 +5,7 @@ import 'package:spark_flutter_app/features/auth/ui/login_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/register_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/reset_password_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/verification_view.dart';
+import 'package:spark_flutter_app/features/home/ui/warning_screen.dart';
 import 'package:spark_flutter_app/features/main/ui/main_screen.dart';
 import 'package:spark_flutter_app/features/onboarding/ui/onboarding_screen.dart';
 
@@ -38,6 +39,10 @@ abstract class AppRouter {
         builder: (context, state) => const ResetPasswordView(),
       ),
       GoRoute(path: '/', builder: (context, state) => const MainScreen()),
+      GoRoute(
+        path: Routes.warningScreen,
+        builder: (context, state) => const WarningScreen(),
+      ),
     ],
   );
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:spark_flutter_app/core/helpers/assets.dart';
+import 'package:spark_flutter_app/core/routing/routes.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 
 class HomeAppbar extends StatelessWidget {
@@ -26,8 +28,14 @@ class HomeAppbar extends StatelessWidget {
             ],
           ),
           Spacer(),
-          Icon(Icons.warning_amber_rounded, color: Color(0XFFE99629), size: 28),
-          SizedBox(width: 12.w),
+          IconButton(
+            icon: Icon(
+              Icons.warning_amber_rounded,
+              color: Color(0XFFE99629),
+              size: 28,
+            ),
+            onPressed: () => GoRouter.of(context).push(Routes.warningScreen),
+          ),
           Icon(Icons.notifications_none_rounded, size: 28),
         ],
       ),

@@ -31,7 +31,7 @@ class ReminderItem extends StatelessWidget {
             width: 65.w,
             child: AppButton(
               text: 'Taken',
-              textStyle: Styles.font12BlackRegular,
+              textStyle: Styles.font14BlackRegular,
               backgroundColor: Color(0XFF43D613),
               radius: 10.r,
             ),
@@ -41,7 +41,7 @@ class ReminderItem extends StatelessWidget {
             width: 65.w,
             child: AppButton(
               text: 'Missed',
-              textStyle: Styles.font12BlackRegular,
+              textStyle: Styles.font14BlackRegular,
               backgroundColor: Colors.transparent,
               borderSide: BorderSide(color: Colors.red),
               radius: 10.r,
