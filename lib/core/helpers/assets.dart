@@ -9,6 +9,16 @@ class Assets {
   static const String cameraLogo = 'assets/images/camera_logo.png';
   static const String appbarBackground = 'assets/images/appbar_background.png';
   static const String cardBackground = 'assets/images/card_background.png';
+  // test images
   static const String testAvatarImg = 'assets/images/test_avatar_img.png';
   static const String testMedicineImg = 'assets/images/test_medicine_img.png';
+  // SVG icons
+  static const String homeOutlined = 'assets/svgs/home_outlined.svg';
+  static const String homeFilled = 'assets/svgs/home_filled.svg';
+  static const String remindersOutlined = 'assets/svgs/reminders_outlined.svg';
+  static const String remindersFilled = 'assets/svgs/reminders_filled.svg';
+  static const String medicinesOutlined = 'assets/svgs/medicines_outlined.svg';
+  static const String medicinesFilled = 'assets/svgs/medicines_filled.svg';
+  static const String profileOutlined = 'assets/svgs/profile_outlined.svg';
+  static const String profileFilled = 'assets/svgs/profile_filled.svg';
 }

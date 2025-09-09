@@ -23,7 +23,7 @@ class MedicineSection extends StatelessWidget {
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: 3,
-            separatorBuilder: (_, __) => SizedBox(height: 12.h),
+            separatorBuilder: (_, __) => SizedBox(height: 16.h),
             itemBuilder: (context, index) => const MedicineItem(),
           ),
         ),

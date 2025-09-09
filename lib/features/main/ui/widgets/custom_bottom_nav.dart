@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spark_flutter_app/core/helpers/assets.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 
 class CustomBottomNav extends StatelessWidget {
@@ -16,7 +17,6 @@ class CustomBottomNav extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 100.h,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: const BorderRadius.only(
@@ -24,7 +24,11 @@ class CustomBottomNav extends StatelessWidget {
           topRight: Radius.circular(24),
         ),
         boxShadow: [
-          BoxShadow(color: Colors.black26, spreadRadius: 1, blurRadius: 5),
+          BoxShadow(
+            color: ColorManager.primaryBlue,
+            spreadRadius: 1,
+            blurRadius: 1,
+          ),
         ],
       ),
       child: ClipRRect(
@@ -35,66 +39,71 @@ class CustomBottomNav extends StatelessWidget {
         child: BottomNavigationBar(
           currentIndex: currentIndex,
           selectedItemColor: ColorManager.primaryBlue,
-          selectedLabelStyle: TextStyle(fontWeight: FontWeight.w600),
-          unselectedLabelStyle: TextStyle(fontWeight: FontWeight.w600),
-          unselectedItemColor: Colors.black,
+          selectedLabelStyle: TextStyle(
+            fontSize: 12.sp,
+            fontWeight: FontWeight.w600,
+          ),
+          unselectedLabelStyle: TextStyle(
+            fontWeight: FontWeight.w600,
+            fontSize: 12.sp,
+          ),
+          unselectedItemColor: ColorManager.grey,
           type: BottomNavigationBarType.fixed,
           onTap: onTap,
           items: [
-            _buildNavItem(
-              index: 0,
-              currentIndex: currentIndex,
-              icon: FontAwesomeIcons.house,
-              label: "Home",
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: SvgPicture.asset(
+                  currentIndex == 0 ? Assets.homeFilled : Assets.homeOutlined,
+                  width: 24,
+                  height: 24,
+                ),
+              ),
+              label: 'Home',
             ),
-            _buildNavItem(
-              index: 1,
-              currentIndex: currentIndex,
-              icon: FontAwesomeIcons.clock,
-              label: "Reminders",
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: SvgPicture.asset(
+                  currentIndex == 1
+                      ? Assets.remindersFilled
+                      : Assets.remindersOutlined,
+                  width: 24,
+                  height: 24,
+                ),
+              ),
+              label: 'Reminders',
             ),
-            _buildNavItem(
-              index: 2,
-              currentIndex: currentIndex,
-              icon: FontAwesomeIcons.pills,
-              label: "Medicines",
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: SvgPicture.asset(
+                  currentIndex == 2
+                      ? Assets.medicinesFilled
+                      : Assets.medicinesOutlined,
+                  width: 24,
+                  height: 24,
+                ),
+              ),
+              label: 'Medicines',
             ),
-            _buildNavItem(
-              index: 3,
-              currentIndex: currentIndex,
-              icon: Icons.settings_outlined,
-              label: "Profile",
+            BottomNavigationBarItem(
+              icon: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 5),
+                child: SvgPicture.asset(
+                  currentIndex == 3
+                      ? Assets.profileFilled
+                      : Assets.profileOutlined,
+                  width: 24,
+                  height: 24,
+                ),
+              ),
+              label: 'Profile',
             ),
           ],
         ),
       ),
-    );
-  }
-
-  BottomNavigationBarItem _buildNavItem({
-    required int index,
-    required int currentIndex,
-    required IconData icon,
-    required String label,
-  }) {
-    final bool isSelected = index == currentIndex;
-
-    return BottomNavigationBarItem(
-      icon:
-          isSelected
-              ? Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 15.5.w,
-                  vertical: 6.5.h,
-                ),
-                decoration: BoxDecoration(
-                  color: ColorManager.primaryBlue,
-                  borderRadius: BorderRadius.circular(12),
-                ),
-                child: Icon(icon, color: Colors.white),
-              )
-              : Icon(icon),
-      label: label,
     );
   }
 }

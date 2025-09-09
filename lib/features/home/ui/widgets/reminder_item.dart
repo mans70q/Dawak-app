@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 import 'package:spark_flutter_app/core/widgets/app_button.dart';
 
@@ -11,9 +12,8 @@ class ReminderItem extends StatelessWidget {
     return Container(
       padding: EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Color(0XFFF7F7F7),
+        color: ColorManager.lightBlue,
         borderRadius: BorderRadius.circular(15.r),
-        border: Border.all(color: Colors.black54),
       ),
       child: Row(
         children: [
@@ -29,21 +29,24 @@ class ReminderItem extends StatelessWidget {
           Spacer(),
           SizedBox(
             width: 65.w,
+            height: 36.h,
             child: AppButton(
               text: 'Taken',
-              textStyle: Styles.font14BlackRegular,
-              backgroundColor: Color(0XFF43D613),
+              textStyle: Styles.font14greyRegular.copyWith(color: Colors.white),
               radius: 10.r,
             ),
           ),
           SizedBox(width: 16.w),
           SizedBox(
             width: 65.w,
+            height: 36.h,
             child: AppButton(
               text: 'Missed',
-              textStyle: Styles.font14BlackRegular,
-              backgroundColor: Colors.transparent,
-              borderSide: BorderSide(color: Colors.red),
+              textStyle: Styles.font14greyRegular.copyWith(
+                color: ColorManager.primaryBlue,
+              ),
+              backgroundColor: Colors.white,
+              borderSide: BorderSide(color: ColorManager.primaryBlue),
               radius: 10.r,
             ),
           ),
