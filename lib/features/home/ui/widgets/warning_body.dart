@@ -54,10 +54,10 @@ class WarningBody extends StatelessWidget {
             height: 530.h,
             child: TabBarView(
               children: <Widget>[
-                RiskCardList(items: items, riskType: 'all'),
-                RiskCardList(items: items, riskType: 'high'),
-                RiskCardList(items: items, riskType: 'medium'),
-                RiskCardList(items: [], riskType: 'low'),
+                WarningCardList(items: items, riskType: 'all'),
+                WarningCardList(items: items, riskType: 'high'),
+                WarningCardList(items: items, riskType: 'medium'),
+                WarningCardList(items: [], riskType: 'low'),
               ],
             ),
           ),
