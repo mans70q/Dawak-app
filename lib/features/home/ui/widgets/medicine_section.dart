@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spark_flutter_app/features/home/ui/widgets/medicine_item.dart';
 import 'package:spark_flutter_app/features/home/ui/widgets/section_header.dart';
+import 'package:spark_flutter_app/features/main/logic/main_navigation_cubit.dart';
 
 class MedicineSection extends StatelessWidget {
   const MedicineSection({super.key});
@@ -13,7 +15,7 @@ class MedicineSection extends StatelessWidget {
         SectionHeader(
           title: 'My Medicines',
           onViewAll: () {
-            // TODO: implement navigation
+            context.read<MainNavigationCubit>().changeTab(2);
           },
         ),
         SizedBox(height: 16.h),
