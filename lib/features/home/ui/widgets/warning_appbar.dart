@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:spark_flutter_app/core/helpers/assets.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
-import 'package:spark_flutter_app/features/home/ui/widgets/search_text_field.dart';
+import 'package:spark_flutter_app/core/widgets/search_text_field.dart';
 
 class WarningAppbar extends StatelessWidget {
   const WarningAppbar({super.key});
@@ -52,7 +52,11 @@ class WarningAppbar extends StatelessWidget {
             ),
           ),
           SizedBox(height: 30.h),
-          SizedBox(width: 349.w, height: 48.h, child: SearchTextField()),
+          SizedBox(
+            width: 349.w,
+            height: 48.h,
+            child: SearchTextField(hintText: 'Search medications...'),
+          ),
         ],
       ),
     );

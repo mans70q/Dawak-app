@@ -1,3 +1,4 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:spark_flutter_app/core/routing/routes.dart';
 import 'package:spark_flutter_app/features/auth/ui/forget_pass_view.dart';
@@ -6,6 +7,7 @@ import 'package:spark_flutter_app/features/auth/ui/register_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/reset_password_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/verification_view.dart';
 import 'package:spark_flutter_app/features/home/ui/warning_screen.dart';
+import 'package:spark_flutter_app/features/main/logic/main_navigation_cubit.dart';
 import 'package:spark_flutter_app/features/main/ui/main_screen.dart';
 import 'package:spark_flutter_app/features/onboarding/ui/onboarding_screen.dart';
 
@@ -13,7 +15,14 @@ abstract class AppRouter {
   static final router = GoRouter(
     initialLocation: '/',
     routes: [
-      GoRoute(path: '/', builder: (context, state) => const MainScreen()),
+      GoRoute(
+        path: '/',
+        builder:
+            (context, state) => BlocProvider(
+              create: (context) => MainNavigationCubit(),
+              child: MainScreen(),
+            ),
+      ),
       GoRoute(
         path: Routes.onboardingScreen,
         // path: '/', // for testing purposes
