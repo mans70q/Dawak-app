@@ -21,4 +21,5 @@ class Assets {
   static const String medicinesFilled = 'assets/svgs/medicines_filled.svg';
   static const String profileOutlined = 'assets/svgs/profile_outlined.svg';
   static const String profileFilled = 'assets/svgs/profile_filled.svg';
+  static const String searchLens = 'assets/svgs/search_lens.svg';
 }
