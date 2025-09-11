@@ -16,7 +16,7 @@ class HomeScreen extends StatelessWidget {
           child: Column(
             children: [
               const HomeAppbar(),
-              const AddMedicineCards(),
+              AddMedicineCards(),
               SizedBox(height: 20.h),
               const MedicineSection(),
               SizedBox(height: 20.h),

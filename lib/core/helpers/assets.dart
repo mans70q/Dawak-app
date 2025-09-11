@@ -22,4 +22,6 @@ class Assets {
   static const String profileOutlined = 'assets/svgs/profile_outlined.svg';
   static const String profileFilled = 'assets/svgs/profile_filled.svg';
   static const String searchLens = 'assets/svgs/search_lens.svg';
+  static const String manualEntry = 'assets/svgs/manual_entry.svg';
+  static const String scanEntry = 'assets/svgs/scan_entry.svg';
 }
