@@ -1,13 +1,51 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:spark_flutter_app/core/helpers/assets.dart';
+import 'package:spark_flutter_app/core/services/image_service.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 import 'package:spark_flutter_app/core/widgets/app_button.dart';
 
 class AddMedicineCards extends StatelessWidget {
-  const AddMedicineCards({super.key});
+  AddMedicineCards({super.key});
+  final ImageService imageService = ImageService();
+
+  void pickImage(BuildContext context) async {
+    File? image;
+    await showModalBottomSheet(
+      context: context,
+      builder:
+          (_) => Wrap(
+            children: [
+              ListTile(
+                leading: const Icon(Icons.camera_alt),
+                title: const Text("Snap a Picture"),
+                onTap: () async {
+                  image = await imageService.pickFromCamera();
+                  Navigator.pop(context);
+                },
+              ),
+              ListTile(
+                leading: const Icon(Icons.photo_library),
+                title: const Text("Choose from Gallery"),
+                onTap: () async {
+                  image = await imageService.pickFromGallery();
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
+    );
+
+    if (image != null) {
+      print("Selected image: ${image!.path}");
+      // Later: upload
+      // await imageService.uploadPicture(image!);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +88,9 @@ class AddMedicineCards extends StatelessWidget {
                     height: 36.h,
                     child: AppButton(
                       text: 'Scan',
+                      onPressed: () {
+                        pickImage(context);
+                      },
                       textStyle: Styles.font14BlueSemiBold,
                       backgroundColor: Colors.white,
                       radius: 10.r,
