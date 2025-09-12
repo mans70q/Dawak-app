@@ -1,5 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:spark_flutter_app/core/helpers/constants.dart';
+import 'package:spark_flutter_app/core/helpers/shared_pref_helper.dart';
 
 class DioFactory {
   DioFactory._();
@@ -24,7 +26,8 @@ class DioFactory {
   static void addDioHeaders() async {
     dio?.options.headers = {
       'Accept': 'application/json',
-      'Authorization': 'Bearer ', //TODO: add token
+      'Authorization':
+          'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken) ?? ''}',
     };
   }
 
@@ -38,5 +41,9 @@ class DioFactory {
         compact: true,
       ),
     );
+  }
+
+  static void addTokenAfterAuth(String token) {
+    dio?.options.headers = {'Authorization': 'Bearer $token'};
   }
 }

@@ -16,6 +16,7 @@ class SparkApp extends StatelessWidget {
           title: 'SPARK app',
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
+            listTileTheme: ListTileThemeData(tileColor: Colors.white),
             fontFamily: 'Roboto',
             scaffoldBackgroundColor: Colors.white,
             bottomNavigationBarTheme: BottomNavigationBarThemeData(

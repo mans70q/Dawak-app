@@ -39,6 +39,7 @@ dependencies:
   flutter_launcher_icons: ^0.14.4
   flutter_native_splash: ^2.4.6
   flutter_screenutil: ^5.9.3
+  flutter_secure_storage: ^9.2.4
   flutter_svg: ^2.2.1
   font_awesome_flutter: ^10.10.0
   freezed: ^3.2.2
@@ -52,6 +53,7 @@ dependencies:
   pretty_dio_logger: ^1.4.0
   retrofit: ^4.7.2
   retrofit_generator: ^10.0.5
+  shared_preferences: ^2.5.3
   smooth_page_indicator: ^1.2.1
 
 dev_dependencies:

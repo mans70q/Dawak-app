@@ -8,11 +8,15 @@ class CustomTextFormField extends StatefulWidget {
     super.key,
     required this.hintText,
     this.obscureText = false, // default = false
-    this.validator, // default = null
+    this.validator,
+    this.controller,
+    this.isFinalField = false, // default = null
   });
 
   final String hintText;
   final bool obscureText;
+  final bool isFinalField;
+  final TextEditingController? controller;
   final String? Function(String?)? validator;
 
   @override
@@ -31,6 +35,10 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller,
+      onTapOutside: (event) => FocusScope.of(context).unfocus(),
+      textInputAction:
+          widget.isFinalField ? TextInputAction.done : TextInputAction.next,
       decoration: InputDecoration(
         fillColor: ColorManager.lightGrey,
         filled: true,
@@ -38,6 +46,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           borderRadius: BorderRadius.circular(15.r),
           borderSide: BorderSide.none,
         ),
+
         hintText: widget.hintText,
         hintStyle: Styles.font12WhiteRegular.copyWith(color: ColorManager.grey),
         suffixIcon:

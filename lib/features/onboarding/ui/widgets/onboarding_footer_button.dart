@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:spark_flutter_app/core/helpers/constants.dart';
+import 'package:spark_flutter_app/core/helpers/shared_pref_helper.dart';
 import 'package:spark_flutter_app/core/routing/routes.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 import 'package:spark_flutter_app/core/widgets/app_button.dart';
@@ -30,7 +32,8 @@ class OnboardingFooterButton extends StatelessWidget {
               curve: Curves.easeInOut,
             );
           } else {
-            GoRouter.of(context).pushReplacement(Routes.loginScreen);
+            SharedPrefHelper.setData(SharedPrefKeys.isOnboardingComplete, true);
+            GoRouter.of(context).go(Routes.loginScreen);
           }
         },
       ),

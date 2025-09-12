@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:spark_flutter_app/core/helpers/validators.dart';
@@ -7,6 +8,7 @@ import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 import 'package:spark_flutter_app/core/widgets/app_button.dart';
 import 'package:spark_flutter_app/core/widgets/handle_indicator.dart';
+import 'package:spark_flutter_app/features/auth/logic/login%20cubit/login_cubit.dart';
 import 'package:spark_flutter_app/features/auth/ui/widgets/auth_switch.dart';
 import 'package:spark_flutter_app/features/auth/ui/widgets/custom_text_form_field.dart';
 import 'package:spark_flutter_app/features/auth/ui/widgets/or_with.dart';
@@ -46,73 +48,125 @@ class LoginForm extends StatelessWidget {
                           right: 20.w,
                           bottom: 20.h,
                         ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            HandleIndicator(),
-                            SizedBox(height: 28.h),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                'Email',
-                                style: Styles.font16BlackSemiBold,
+                        child: Form(
+                          key: context.read<LoginCubit>().formKey,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              HandleIndicator(),
+                              SizedBox(height: 28.h),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Email',
+                                  style: Styles.font16BlackSemiBold,
+                                ),
                               ),
-                            ),
-                            SizedBox(height: 10.h),
-                            CustomTextFormField(
-                              hintText: 'AH365@gmail.com',
-                              validator: Validator.validateEmailAddress,
-                            ),
-                            SizedBox(height: 20.h),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: Text(
-                                'Password',
-                                style: Styles.font16BlackSemiBold,
+                              SizedBox(height: 10.h),
+                              CustomTextFormField(
+                                hintText: 'AH365@gmail.com',
+                                validator: Validator.validateEmailAddress,
+                                controller:
+                                    context.read<LoginCubit>().emailController,
                               ),
-                            ),
-                            CustomTextFormField(
-                              hintText: '',
-                              obscureText: true,
-                              validator: Validator.validatePassword,
-                            ),
-                            SizedBox(height: 5.h),
-                            Align(
-                              alignment: Alignment.centerLeft,
-                              child: TextButton(
+                              SizedBox(height: 20.h),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(
+                                  'Password',
+                                  style: Styles.font16BlackSemiBold,
+                                ),
+                              ),
+                              CustomTextFormField(
+                                hintText: '',
+                                obscureText: true,
+                                validator: Validator.validatePassword,
+                                controller:
+                                    context
+                                        .read<LoginCubit>()
+                                        .passwordController,
+                                isFinalField: true,
+                              ),
+                              SizedBox(height: 5.h),
+                              Align(
+                                alignment: Alignment.centerLeft,
+                                child: TextButton(
+                                  onPressed:
+                                      () => GoRouter.of(
+                                        context,
+                                      ).push(Routes.forgotPasswordScreen),
+                                  child: Text(
+                                    'Forgot Password?',
+                                    style: Styles.font12BlueBold,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: 20.h),
+                              SizedBox(
+                                width: double.infinity,
+                                height: 52.h,
+                                child: BlocConsumer<LoginCubit, LoginState>(
+                                  listener: (context, state) {
+                                    if (state is LoginSuccess) {
+                                      GoRouter.of(
+                                        context,
+                                      ).go(Routes.mainScreen);
+                                    } else if (state is LoginError) {
+                                      showModalBottomSheet(
+                                        context: context,
+                                        builder:
+                                            (context) => Wrap(
+                                              children: [
+                                                ListTile(
+                                                  title: Text(
+                                                    state.errorModel.message!,
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                      );
+                                    }
+                                  },
+                                  builder: (context, state) {
+                                    return state is LoginLoading
+                                        ? Center(
+                                          child: CircularProgressIndicator(
+                                            color: ColorManager.primaryBlue,
+                                          ),
+                                        )
+                                        : AppButton(
+                                          text: 'Login',
+                                          textStyle: Styles.font20WhiteSemiBold,
+                                          backgroundColor:
+                                              ColorManager.primaryBlue,
+                                          onPressed: () {
+                                            if (context
+                                                .read<LoginCubit>()
+                                                .formKey
+                                                .currentState!
+                                                .validate()) {
+                                              context
+                                                  .read<LoginCubit>()
+                                                  .login();
+                                            }
+                                          },
+                                        );
+                                  },
+                                ),
+                              ),
+                              SizedBox(height: 24.h),
+                              OrWith(title: "or Login With"),
+                              Spacer(),
+                              AuthSwitch(
+                                text: "Don't have an account?",
+                                buttonText: "Sign Up",
                                 onPressed:
                                     () => GoRouter.of(
                                       context,
-                                    ).push(Routes.forgotPasswordScreen),
-                                child: Text(
-                                  'Forgot Password?',
-                                  style: Styles.font12BlueBold,
-                                ),
+                                    ).pushReplacement(Routes.registerScreen),
                               ),
-                            ),
-                            SizedBox(height: 20.h),
-                            SizedBox(
-                              width: double.infinity,
-                              height: 52.h,
-                              child: AppButton(
-                                text: 'Login',
-                                textStyle: Styles.font20WhiteSemiBold,
-                                backgroundColor: ColorManager.primaryBlue,
-                                onPressed: () {},
-                              ),
-                            ),
-                            SizedBox(height: 24.h),
-                            OrWith(title: "or Login With"),
-                            Spacer(),
-                            AuthSwitch(
-                              text: "Don't have an account?",
-                              buttonText: "Sign Up",
-                              onPressed:
-                                  () => GoRouter.of(
-                                    context,
-                                  ).pushReplacement(Routes.registerScreen),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       ),
                     ),

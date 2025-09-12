@@ -1,6 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:spark_flutter_app/core/di/dependency_injection.dart';
+import 'package:spark_flutter_app/core/helpers/auth_manager.dart';
+import 'package:spark_flutter_app/core/helpers/constants.dart';
+import 'package:spark_flutter_app/core/helpers/shared_pref_helper.dart';
 import 'package:spark_flutter_app/core/routing/routes.dart';
+import 'package:spark_flutter_app/features/auth/logic/login%20cubit/login_cubit.dart';
+import 'package:spark_flutter_app/features/auth/logic/register%20cubit/register_cubit.dart';
 import 'package:spark_flutter_app/features/auth/ui/forget_pass_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/login_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/register_view.dart';
@@ -14,9 +20,29 @@ import 'package:spark_flutter_app/features/onboarding/ui/onboarding_screen.dart'
 abstract class AppRouter {
   static final router = GoRouter(
     initialLocation: '/',
+    redirect: (context, state) async {
+      final isOnboardingComplete =
+          await SharedPrefHelper.getBool(SharedPrefKeys.isOnboardingComplete) ??
+          false;
+      final isUserLoggedIn = AuthManager.isUserLoggedIn;
+
+      final currentLocation = state.uri.toString();
+
+      if (currentLocation == '/') {
+        if (!isOnboardingComplete) return Routes.onboardingScreen;
+        if (isUserLoggedIn) return Routes.mainScreen;
+        return Routes.loginScreen;
+      }
+      return null;
+    },
     routes: [
       GoRoute(
-        path: '/',
+        path: Routes.onboardingScreen,
+        // path: '/',
+        builder: (context, state) => const OnboardingScreen(),
+      ),
+      GoRoute(
+        path: Routes.mainScreen,
         builder:
             (context, state) => BlocProvider(
               create: (context) => MainNavigationCubit(),
@@ -24,17 +50,20 @@ abstract class AppRouter {
             ),
       ),
       GoRoute(
-        path: Routes.onboardingScreen,
-        // path: '/', // for testing purposes
-        builder: (context, state) => const OnboardingScreen(),
-      ),
-      GoRoute(
         path: Routes.loginScreen,
-        builder: (context, state) => const LoginView(),
+        builder:
+            (context, state) => BlocProvider(
+              create: (context) => LoginCubit(getIt()),
+              child: const LoginView(),
+            ),
       ),
       GoRoute(
         path: Routes.registerScreen,
-        builder: (context, state) => const RegisterView(),
+        builder:
+            (context, state) => BlocProvider(
+              create: (context) => RegisterCubit(getIt()),
+              child: const RegisterView(),
+            ),
       ),
       GoRoute(
         path: Routes.forgotPasswordScreen,
