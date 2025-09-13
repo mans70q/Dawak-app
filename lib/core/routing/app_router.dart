@@ -12,11 +12,13 @@ import 'package:spark_flutter_app/features/auth/ui/login_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/register_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/reset_password_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/verification_view.dart';
+import 'package:spark_flutter_app/features/home/data/models/scan_response.dart';
 import 'package:spark_flutter_app/features/home/logic/scan%20cubit/scan_cubit.dart';
 import 'package:spark_flutter_app/features/home/ui/warning_screen.dart';
 import 'package:spark_flutter_app/features/main/logic/main_navigation_cubit.dart';
 import 'package:spark_flutter_app/features/home/logic/profile%20cubit/profile_cubit.dart';
 import 'package:spark_flutter_app/features/main/ui/main_screen.dart';
+import 'package:spark_flutter_app/features/medicines/ui/add_medicine_screen.dart';
 import 'package:spark_flutter_app/features/onboarding/ui/onboarding_screen.dart';
 
 abstract class AppRouter {
@@ -85,6 +87,12 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.warningScreen,
         builder: (context, state) => const WarningScreen(),
+      ),
+      GoRoute(
+        path: Routes.addMedicineScreen,
+        builder:
+            (context, state) =>
+                AddMedicineScreen(scanResponse: state.extra as ScanResponse),
       ),
     ],
   );
