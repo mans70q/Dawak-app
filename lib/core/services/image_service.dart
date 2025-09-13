@@ -13,8 +13,4 @@ class ImageService {
     final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
     return pickedFile != null ? File(pickedFile.path) : null;
   }
-
-  Future<void> uploadPicture(File file) async {
-    // TODO: Implement API call with Dio when backend is ready
-  }
 }

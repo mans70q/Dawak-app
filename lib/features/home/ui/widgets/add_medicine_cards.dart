@@ -1,13 +1,14 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:spark_flutter_app/core/helpers/assets.dart';
 import 'package:spark_flutter_app/core/services/image_service.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 import 'package:spark_flutter_app/core/widgets/app_button.dart';
+import 'package:spark_flutter_app/features/home/logic/scan%20cubit/scan_cubit.dart';
 
 class AddMedicineCards extends StatelessWidget {
   AddMedicineCards({super.key});
@@ -41,9 +42,7 @@ class AddMedicineCards extends StatelessWidget {
     );
 
     if (image != null) {
-      print("Selected image: ${image!.path}");
-      // Later: upload
-      // await imageService.uploadPicture(image!);
+      context.read<ScanCubit>().uploadImage(image!);
     }
   }
 
@@ -86,31 +85,62 @@ class AddMedicineCards extends StatelessWidget {
                   SizedBox(
                     width: 114.w,
                     height: 36.h,
-                    child: AppButton(
-                      text: 'Scan',
-                      onPressed: () {
-                        pickImage(context);
+                    child: BlocConsumer<ScanCubit, ScanState>(
+                      listener: (context, state) {
+                        if (state is ScanSuccess) {
+                          showModalBottomSheet(
+                            context: context,
+                            builder:
+                                (context) => Wrap(
+                                  children: [
+                                    ListTile(
+                                      title: Text(
+                                        'Success',
+                                        style: Styles.font14BlueSemiBold,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                          );
+                        } else if (state is ScanError) {
+                          showModalBottomSheet(
+                            context: context,
+                            builder:
+                                (context) => Wrap(
+                                  children: [
+                                    ListTile(
+                                      title: Text(state.errorModel.message!),
+                                    ),
+                                  ],
+                                ),
+                          );
+                        }
                       },
-                      textStyle: Styles.font14BlueSemiBold,
-                      backgroundColor: Colors.white,
-                      radius: 10.r,
+                      builder: (context, state) {
+                        if (state is ScanLoading) {
+                          return Center(
+                            child: CircularProgressIndicator(
+                              color: Colors.white,
+                            ),
+                          );
+                        } else {
+                          return AppButton(
+                            text: 'Scan',
+                            onPressed: () {
+                              pickImage(context);
+                            },
+                            textStyle: Styles.font14BlueSemiBold,
+                            backgroundColor: Colors.white,
+                            radius: 10.r,
+                          );
+                        }
+                      },
                     ),
                   ),
                 ],
               ),
               Image.asset(Assets.cameraLogo),
             ],
-          ),
-          SizedBox(height: 8.h),
-          SmoothPageIndicator(
-            controller: PageController(),
-            count: 2,
-            effect: ExpandingDotsEffect(
-              activeDotColor: Colors.white,
-              dotColor: Colors.white,
-              dotHeight: 8.h,
-              dotWidth: 8.w,
-            ),
           ),
         ],
       ),

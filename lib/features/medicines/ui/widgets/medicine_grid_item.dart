@@ -4,9 +4,11 @@ import 'package:spark_flutter_app/core/helpers/assets.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 import 'package:spark_flutter_app/core/widgets/app_button.dart';
+import 'package:spark_flutter_app/features/home/data/models/profile_response.dart';
 
 class MedicineGridItem extends StatelessWidget {
-  const MedicineGridItem({super.key});
+  const MedicineGridItem({super.key, required this.medicine});
+  final Medicine medicine;
 
   @override
   Widget build(BuildContext context) {
@@ -19,15 +21,26 @@ class MedicineGridItem extends StatelessWidget {
       ),
       child: Column(
         children: [
-          Image.asset(
-            Assets.testMedicineImg,
-            height: 65.h,
-            width: 65.w,
-            fit: BoxFit.cover,
-          ),
+          medicine.imageUrl == null
+              ? Image.asset(
+                Assets.testMedicineImg,
+                height: 65.h,
+                width: 65.w,
+                fit: BoxFit.cover,
+              )
+              : Image.network(
+                medicine.imageUrl!,
+                height: 65.h,
+                width: 65.w,
+                fit: BoxFit.contain,
+              ),
+
           SizedBox(height: 12.h),
-          Text('Medicine 1', style: Styles.font16BlackSemiBold),
-          Text('500mg - 2x/day', style: Styles.font14greyRegular),
+          Text(medicine.name!, style: Styles.font16BlackSemiBold),
+          Text(
+            '${medicine.dosage} - ${medicine.frequency!}',
+            style: Styles.font14greyRegular,
+          ),
           SizedBox(height: 12.h),
           SizedBox(
             width: 120,

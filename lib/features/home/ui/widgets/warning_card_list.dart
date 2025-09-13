@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spark_flutter_app/features/home/ui/widgets/warning_empty_state.dart';
 import 'package:spark_flutter_app/features/home/ui/widgets/warning_item_card.dart';
 

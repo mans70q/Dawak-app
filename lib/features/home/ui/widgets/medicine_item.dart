@@ -3,9 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spark_flutter_app/core/helpers/assets.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
+import 'package:spark_flutter_app/features/home/data/models/profile_response.dart';
 
 class MedicineItem extends StatelessWidget {
-  const MedicineItem({super.key});
+  const MedicineItem({super.key, required this.medicine});
+  final Medicine medicine;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +26,10 @@ class MedicineItem extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10.r),
             ),
-            child: Image.asset(Assets.testMedicineImg, fit: BoxFit.contain),
+            child:
+                medicine.imageUrl == null
+                    ? Image.asset(Assets.testMedicineImg, fit: BoxFit.contain)
+                    : Image.network(medicine.imageUrl!, fit: BoxFit.contain),
           ),
           SizedBox(width: 12),
           Column(
@@ -32,8 +37,11 @@ class MedicineItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             spacing: 8,
             children: [
-              Text('Medicine 1', style: Styles.font18BlackSemiBold),
-              Text('500mg - 2x/day', style: Styles.font14greyRegular),
+              Text(medicine.name!, style: Styles.font18BlackSemiBold),
+              Text(
+                '${medicine.dosage} - ${medicine.frequency!}',
+                style: Styles.font14greyRegular,
+              ),
             ],
           ),
         ],

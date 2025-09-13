@@ -128,7 +128,7 @@ return error(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( T data)?  success,TResult Function( ApiErrorModel error)?  error,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  initial,TResult Function()?  loading,TResult Function( T data)?  success,TResult Function( ApiErrorModel errorModel)?  error,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case RegisterLoading() when loading != null:
@@ -152,7 +152,7 @@ return error(_that.errorModel);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( T data)  success,required TResult Function( ApiErrorModel error)  error,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  initial,required TResult Function()  loading,required TResult Function( T data)  success,required TResult Function( ApiErrorModel errorModel)  error,}) {final _that = this;
 switch (_that) {
 case _Initial():
 return initial();case RegisterLoading():
@@ -175,7 +175,7 @@ return error(_that.errorModel);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( T data)?  success,TResult? Function( ApiErrorModel error)?  error,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  initial,TResult? Function()?  loading,TResult? Function( T data)?  success,TResult? Function( ApiErrorModel errorModel)?  error,}) {final _that = this;
 switch (_that) {
 case _Initial() when initial != null:
 return initial();case RegisterLoading() when loading != null:
@@ -347,7 +347,7 @@ int get hashCode => Object.hash(runtimeType,errorModel);
 
 @override
 String toString() {
-  return 'RegisterState<$T>.error(error: $errorModel)';
+  return 'RegisterState<$T>.error(errorModel: $errorModel)';
 }
 
 
@@ -358,7 +358,7 @@ abstract mixin class $RegisterErrorCopyWith<T,$Res> implements $RegisterStateCop
   factory $RegisterErrorCopyWith(RegisterError<T> value, $Res Function(RegisterError<T>) _then) = _$RegisterErrorCopyWithImpl;
 @useResult
 $Res call({
- ApiErrorModel error
+ ApiErrorModel errorModel
 });
 
 
@@ -375,9 +375,9 @@ class _$RegisterErrorCopyWithImpl<T,$Res>
 
 /// Create a copy of RegisterState
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') $Res call({Object? error = null,}) {
+@pragma('vm:prefer-inline') $Res call({Object? errorModel = null,}) {
   return _then(RegisterError<T>(
-null == error ? _self.errorModel : error // ignore: cast_nullable_to_non_nullable
+null == errorModel ? _self.errorModel : errorModel // ignore: cast_nullable_to_non_nullable
 as ApiErrorModel,
   ));
 }

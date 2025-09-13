@@ -23,15 +23,15 @@ class ApiErrorHandler {
           return ApiErrorModel(message: "An unknown network error occurred");
       }
     } else {
-      return ApiErrorModel(message: "Unknown error occurred");
+      return ApiErrorModel(message: error.toString());
     }
   }
 }
 
 ApiErrorModel _handleError(dynamic data) {
   return ApiErrorModel(
-    message: data?['message'] ?? 'Unknown error occurred',
-    statusCode: data?['error']['statusCode'],
-    status: data?['error']['status'],
+    message: data?['message'] ?? 'Unknown error occurred 2',
+    // statusCode: data?['error']['statusCode'],
+    // status: data?['error']['status'],
   );
 }

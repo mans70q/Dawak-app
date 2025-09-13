@@ -16,6 +16,7 @@ class DioFactory {
       dio!.options.connectTimeout = timeOut;
       dio!.options.receiveTimeout = timeOut;
       dio!.options.sendTimeout = timeOut;
+      addDioHeaders();
       addDioInterceptors();
       return dio!;
     } else {
@@ -27,7 +28,7 @@ class DioFactory {
     dio?.options.headers = {
       'Accept': 'application/json',
       'Authorization':
-          'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken) ?? ''}',
+          'Bearer ${await SharedPrefHelper.getSecuredString(SharedPrefKeys.userToken) ?? 'token NA'}',
     };
   }
 

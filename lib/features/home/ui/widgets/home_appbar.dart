@@ -6,7 +6,13 @@ import 'package:spark_flutter_app/core/routing/routes.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 
 class HomeAppbar extends StatelessWidget {
-  const HomeAppbar({super.key});
+  const HomeAppbar({
+    super.key,
+    required this.firstName,
+    required this.lastName,
+  });
+  final String firstName;
+  final String lastName;
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +30,7 @@ class HomeAppbar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text('Hello 👋', style: Styles.font14greyRegular),
-              Text('Ahmed Hassan', style: Styles.font16BlackSemiBold),
+              Text('$firstName $lastName', style: Styles.font16BlackSemiBold),
             ],
           ),
           Spacer(),
