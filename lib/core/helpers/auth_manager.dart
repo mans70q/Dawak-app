@@ -13,7 +13,6 @@ class AuthManager {
     String? userToken = await SharedPrefHelper.getSecuredString(
       SharedPrefKeys.userToken,
     );
-    print('----------------------------------------------$userToken');
     if (userToken != null && userToken.isNotEmpty) {
       isUserLoggedIn = true;
     } else {

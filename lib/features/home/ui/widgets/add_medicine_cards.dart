@@ -3,7 +3,9 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:spark_flutter_app/core/helpers/assets.dart';
+import 'package:spark_flutter_app/core/routing/routes.dart';
 import 'package:spark_flutter_app/core/services/image_service.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
@@ -88,19 +90,9 @@ class AddMedicineCards extends StatelessWidget {
                     child: BlocConsumer<ScanCubit, ScanState>(
                       listener: (context, state) {
                         if (state is ScanSuccess) {
-                          showModalBottomSheet(
-                            context: context,
-                            builder:
-                                (context) => Wrap(
-                                  children: [
-                                    ListTile(
-                                      title: Text(
-                                        'Success',
-                                        style: Styles.font14BlueSemiBold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
+                          GoRouter.of(context).push(
+                            Routes.addMedicineScreen,
+                            extra: state.scanResponse,
                           );
                         } else if (state is ScanError) {
                           showModalBottomSheet(
