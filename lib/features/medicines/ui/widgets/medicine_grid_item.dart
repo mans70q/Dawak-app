@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:spark_flutter_app/core/helpers/assets.dart';
+import 'package:spark_flutter_app/core/routing/routes.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 import 'package:spark_flutter_app/core/widgets/app_button.dart';
@@ -49,6 +51,10 @@ class MedicineGridItem extends StatelessWidget {
               text: 'View Details',
               textStyle: Styles.font12WhiteRegular,
               radius: 8.r,
+              onPressed:
+                  () => GoRouter.of(
+                    context,
+                  ).push(Routes.medicinedetailsScreen, extra: medicine),
             ),
           ),
         ],

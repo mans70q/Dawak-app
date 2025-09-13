@@ -8,4 +8,6 @@ abstract class Routes {
   static const String mainScreen = '/main_screen';
   static const String warningScreen = '/warning_screen';
   static const String addMedicineScreen = '/add_medicine_screen';
+  static const String medicinedetailsScreen = '/medicinedetailsScreen';
+    static const String addMedicineScreen = '/add_medicine_screen';
 }
