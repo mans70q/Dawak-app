@@ -28,7 +28,9 @@ class AddMedicineCards extends StatelessWidget {
                 title: const Text("Snap a Picture"),
                 onTap: () async {
                   image = await imageService.pickFromCamera();
-                  Navigator.pop(context);
+                  if (context.mounted) {
+                    Navigator.pop(context);
+                  }
                 },
               ),
               ListTile(
@@ -36,7 +38,9 @@ class AddMedicineCards extends StatelessWidget {
                 title: const Text("Choose from Gallery"),
                 onTap: () async {
                   image = await imageService.pickFromGallery();
-                  Navigator.pop(context);
+                  if (context.mounted) {
+                    Navigator.pop(context);
+                  }
                 },
               ),
             ],
@@ -44,7 +48,9 @@ class AddMedicineCards extends StatelessWidget {
     );
 
     if (image != null) {
-      context.read<ScanCubit>().uploadImage(image!);
+      if (context.mounted) {
+        context.read<ScanCubit>().uploadImage(image!);
+      }
     }
   }
 

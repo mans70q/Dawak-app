@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
+import 'package:spark_flutter_app/core/models/reminder.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 import 'package:spark_flutter_app/core/widgets/app_button.dart';
-import 'package:spark_flutter_app/features/home/data/models/profile_response.dart';
 
 class ReminderItem extends StatelessWidget {
   const ReminderItem({super.key, required this.reminder});

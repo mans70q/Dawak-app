@@ -42,7 +42,6 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: Routes.onboardingScreen,
-        // path: '/',
         builder: (context, state) => const OnboardingScreen(),
       ),
       GoRoute(
@@ -94,10 +93,9 @@ abstract class AppRouter {
         builder:
             (context, state) =>
                 AddMedicineScreen(scanResponse: state.extra as ScanResponse),
-
       ),
       GoRoute(
-                path: Routes.medicinedetailsScreen,
+        path: Routes.medicinedetailsScreen,
         builder: (context, state) => const MedicineDetailsScreen(),
       ),
     ],

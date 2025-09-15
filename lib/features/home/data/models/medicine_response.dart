@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:spark_flutter_app/features/home/data/models/profile_response.dart';
+import 'package:spark_flutter_app/core/models/medicine.dart';
 
 part 'medicine_response.g.dart';
 

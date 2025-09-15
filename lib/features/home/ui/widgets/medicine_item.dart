@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spark_flutter_app/core/helpers/assets.dart';
+import 'package:spark_flutter_app/core/models/medicine.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
-import 'package:spark_flutter_app/features/home/data/models/profile_response.dart';
 
 class MedicineItem extends StatelessWidget {
   const MedicineItem({super.key, required this.medicine});
