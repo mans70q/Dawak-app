@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 import 'package:spark_flutter_app/features/home/logic/profile%20cubit/profile_cubit.dart';
+import 'package:spark_flutter_app/features/home/logic/warning%20cubit/warning_cubit.dart';
 import 'package:spark_flutter_app/features/home/ui/widgets/home_appbar.dart';
 import 'package:spark_flutter_app/features/home/ui/widgets/add_medicine_cards.dart';
 import 'package:spark_flutter_app/features/home/ui/widgets/medicine_section.dart';
@@ -19,8 +20,9 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   void initState() {
-    context.read<ProfileCubit>().getProfile();
     super.initState();
+    context.read<ProfileCubit>().getProfile();
+    context.read<WarningCubit>().fetchWarningStats();
   }
 
   @override

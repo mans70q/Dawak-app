@@ -4,6 +4,7 @@ import 'package:spark_flutter_app/core/di/dependency_injection.dart';
 import 'package:spark_flutter_app/core/helpers/auth_manager.dart';
 import 'package:spark_flutter_app/core/helpers/constants.dart';
 import 'package:spark_flutter_app/core/helpers/shared_pref_helper.dart';
+import 'package:spark_flutter_app/core/networking/api_service.dart';
 import 'package:spark_flutter_app/core/routing/routes.dart';
 import 'package:spark_flutter_app/features/auth/logic/login%20cubit/login_cubit.dart';
 import 'package:spark_flutter_app/features/auth/logic/register%20cubit/register_cubit.dart';
@@ -13,7 +14,9 @@ import 'package:spark_flutter_app/features/auth/ui/register_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/reset_password_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/verification_view.dart';
 import 'package:spark_flutter_app/features/home/data/models/scan_response.dart';
+import 'package:spark_flutter_app/features/home/data/repos/warning_repo.dart';
 import 'package:spark_flutter_app/features/home/logic/scan%20cubit/scan_cubit.dart';
+import 'package:spark_flutter_app/features/home/logic/warning%20cubit/warning_cubit.dart';
 import 'package:spark_flutter_app/features/home/ui/warning_screen.dart';
 import 'package:spark_flutter_app/features/main/logic/main_navigation_cubit.dart';
 import 'package:spark_flutter_app/features/home/logic/profile%20cubit/profile_cubit.dart';
@@ -53,6 +56,7 @@ abstract class AppRouter {
                 BlocProvider(create: (context) => MainNavigationCubit()),
                 BlocProvider(create: (context) => ProfileCubit(getIt())),
                 BlocProvider(create: (context) => ScanCubit(getIt())),
+                BlocProvider(create: (context) => WarningCubit(WarningRepo(getIt<ApiService>()))),
               ],
               child: MainScreen(),
             ),
@@ -87,17 +91,21 @@ abstract class AppRouter {
       ),
       GoRoute(
         path: Routes.warningScreen,
-        builder: (context, state) => const WarningScreen(),
+        builder:
+            (context, state) => BlocProvider(
+              create:
+                  (context) => WarningCubit(WarningRepo(getIt<ApiService>())),
+              child: const WarningScreen(),
+            ),
       ),
       GoRoute(
         path: Routes.addMedicineScreen,
         builder:
             (context, state) =>
                 AddMedicineScreen(scanResponse: state.extra as ScanResponse),
-
       ),
       GoRoute(
-                path: Routes.medicinedetailsScreen,
+        path: Routes.medicinedetailsScreen,
         builder: (context, state) => const MedicineDetailsScreen(),
       ),
     ],
