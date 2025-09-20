@@ -20,12 +20,13 @@ class HomeAppbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<WarningCubit, WarningState>(
       builder: (context, state) {
-        // Fetch warning count from the state
         final warningCount = state.when(
           initial: () => 0,
           loading: () => 0,
-          success: (_) => 2,
-          statsSuccess: (stats) => stats['unresolved'] ?? 0,
+          success: (_) => 0,
+          statsSuccess: (stats) {
+            return stats['data']['unresolved'] ?? 0;
+          },
           error: (_) => 0,
         );
 
