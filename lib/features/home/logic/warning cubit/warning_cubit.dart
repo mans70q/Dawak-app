@@ -1,8 +1,8 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:spark_flutter_app/core/models/warning.dart';
 import 'package:spark_flutter_app/core/networking/api_error_model.dart';
 import 'package:spark_flutter_app/core/networking/api_result.dart';
-import 'package:spark_flutter_app/features/home/data/models/profile_response.dart';
 import 'package:spark_flutter_app/features/home/data/repos/warning_repo.dart';
 
 part 'warning_state.dart';

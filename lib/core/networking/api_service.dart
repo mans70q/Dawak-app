@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
+import 'package:spark_flutter_app/core/models/warning.dart';
 import 'package:spark_flutter_app/core/networking/api_constants.dart';
 import 'package:spark_flutter_app/features/auth/data/models/login_request_body.dart';
 import 'package:spark_flutter_app/features/auth/data/models/login_response.dart';

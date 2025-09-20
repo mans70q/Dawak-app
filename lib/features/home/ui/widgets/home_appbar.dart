@@ -25,7 +25,7 @@ class HomeAppbar extends StatelessWidget {
           loading: () => 0,
           success: (_) => 0,
           statsSuccess: (stats) {
-            return stats['data']['unresolved'] ?? 0;
+              return stats['data']['unresolved'] ?? 0;
           },
           error: (_) => 0,
         );
@@ -87,17 +87,8 @@ class HomeAppbar extends StatelessWidget {
               Icon(Icons.notifications_none_rounded, size: 28),
             ],
           ),
-          Spacer(),
-          IconButton(
-            icon: Icon(
-              Icons.warning_amber_rounded,
-              color: Color(0XFFE99629),
-              size: 28,
-            ),
-            onPressed: () => GoRouter.of(context).push(Routes.warningScreen),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
