@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:intl/intl.dart';
-import 'package:spark_flutter_app/core/models/reminder.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 import 'package:spark_flutter_app/core/widgets/app_button.dart';
+import 'package:spark_flutter_app/features/home/data/models/reminder_with_medicine.dart';
 
 class ReminderItem extends StatelessWidget {
-  const ReminderItem({super.key, required this.reminder});
-  final Reminder reminder;
+  const ReminderItem({super.key, required this.reminderWithMedicine});
+  final ReminderWithMedicine reminderWithMedicine;
 
   @override
   Widget build(BuildContext context) {
@@ -28,14 +28,14 @@ class ReminderItem extends StatelessWidget {
               SizedBox(
                 width: 150.w,
                 child: Text(
-                  reminder.medicineId!,
+                  reminderWithMedicine.medicine.data!.name!,
                   style: Styles.font18BlackSemiBold,
                   softWrap: true,
                   overflow: TextOverflow.ellipsis,
                 ),
               ),
               Text(
-                DateFormat.jm().format(reminder.nextAt!),
+                DateFormat.jm().format(reminderWithMedicine.reminder.nextAt!),
                 style: Styles.font14greyRegular,
               ),
             ],

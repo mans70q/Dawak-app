@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
-import 'package:spark_flutter_app/core/helpers/auth_manager.dart';
+import 'package:spark_flutter_app/core/services/auth_manager.dart';
 import 'package:spark_flutter_app/core/routing/routes.dart';
 import 'package:spark_flutter_app/features/home/data/models/profile_response.dart';
 import 'package:spark_flutter_app/features/profile/ui/widgets/profile_header.dart';
