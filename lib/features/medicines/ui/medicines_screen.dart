@@ -22,7 +22,7 @@ class MedicinesScreen extends StatelessWidget {
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
-      floatingActionButton: const CustomFabMenu(),
+      floatingActionButton: CustomFabMenu(),
     );
   }
 }

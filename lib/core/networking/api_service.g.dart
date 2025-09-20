@@ -149,7 +149,7 @@ class _ApiService implements ApiService {
       Options(method: 'GET', headers: _headers, extra: _extra)
           .compose(
             _dio.options,
-            '/medicines/${id}',
+            '/medicine/${id}',
             queryParameters: queryParameters,
             data: _data,
           )
@@ -159,6 +159,54 @@ class _ApiService implements ApiService {
     late MedicineResponse _value;
     try {
       _value = MedicineResponse.fromJson(_result.data!);
+    } on Object catch (e, s) {
+      errorLogger?.logError(e, s, _options);
+      rethrow;
+    }
+    return _value;
+  }
+
+  @override
+  Future<AddMedicineResponse> addMedicine(
+    String name,
+    String dosage,
+    String frequency,
+    String instructions,
+    String source,
+    MultipartFile? file,
+  ) async {
+    final _extra = <String, dynamic>{};
+    final queryParameters = <String, dynamic>{};
+    queryParameters.removeWhere((k, v) => v == null);
+    final _headers = <String, dynamic>{};
+    final _data = FormData();
+    _data.fields.add(MapEntry('name', name));
+    _data.fields.add(MapEntry('dosage', dosage));
+    _data.fields.add(MapEntry('frequency', frequency));
+    _data.fields.add(MapEntry('instructions', instructions));
+    _data.fields.add(MapEntry('source', source));
+    if (file != null) {
+      _data.files.add(MapEntry('file', file));
+    }
+    final _options = _setStreamType<AddMedicineResponse>(
+      Options(
+            method: 'POST',
+            headers: _headers,
+            extra: _extra,
+            contentType: 'multipart/form-data',
+          )
+          .compose(
+            _dio.options,
+            '/medicine',
+            queryParameters: queryParameters,
+            data: _data,
+          )
+          .copyWith(baseUrl: _combineBaseUrls(_dio.options.baseUrl, baseUrl)),
+    );
+    final _result = await _dio.fetch<Map<String, dynamic>>(_options);
+    late AddMedicineResponse _value;
+    try {
+      _value = AddMedicineResponse.fromJson(_result.data!);
     } on Object catch (e, s) {
       errorLogger?.logError(e, s, _options);
       rethrow;
