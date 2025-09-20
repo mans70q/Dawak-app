@@ -19,4 +19,9 @@ class AuthManager {
       isUserLoggedIn = false;
     }
   }
+
+  static Future<void> logout() async {
+    await SharedPrefHelper.clearAllSecuredData();
+    isUserLoggedIn = false;
+  }
 }

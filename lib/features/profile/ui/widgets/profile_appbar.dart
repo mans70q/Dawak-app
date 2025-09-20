@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 import 'package:spark_flutter_app/core/helpers/assets.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
+import 'package:spark_flutter_app/features/main/logic/main_navigation_cubit.dart';
 
-class AddMedicineAppbar extends StatelessWidget {
-  const AddMedicineAppbar({super.key});
+class ProfileAppbar extends StatelessWidget {
+  const ProfileAppbar({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 140.h,
+      height: 180.h,
       width: double.infinity,
+      padding: EdgeInsets.symmetric(horizontal: 20.w),
       decoration: BoxDecoration(
         color: ColorManager.primaryBlue,
         image: DecorationImage(
@@ -29,18 +31,23 @@ class AddMedicineAppbar extends StatelessWidget {
         children: [
           SizedBox(height: 40.h),
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              SizedBox(width: 24.w),
-              Navigator.of(context).canPop()
-                  ? IconButton(
-                    onPressed: () {
-                      GoRouter.of(context).pop();
-                    },
-                    icon: Icon(Icons.arrow_back_ios_new, color: Colors.white),
-                  )
-                  : const SizedBox(),
-              SizedBox(width: 50.w),
-              Text('Add Medicine', style: Styles.font20WhiteSemiBold),
+              InkWell(
+                onTap: () => context.read<MainNavigationCubit>().changeTab(0),
+                child: Icon(
+                  Icons.arrow_back_rounded,
+                  color: Colors.white,
+                  size: 30,
+                ),
+              ),
+              Text(
+                'Profile',
+                style: Styles.font24WhiteMedium.copyWith(
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              Icon(Icons.mode_edit_outlined, color: Colors.white, size: 30),
             ],
           ),
         ],

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:spark_flutter_app/core/di/dependency_injection.dart';
-import 'package:spark_flutter_app/core/helpers/auth_manager.dart';
+import 'package:spark_flutter_app/core/services/auth_manager.dart';
 import 'package:spark_flutter_app/core/helpers/constants.dart';
 import 'package:spark_flutter_app/core/helpers/shared_pref_helper.dart';
 import 'package:spark_flutter_app/core/networking/api_service.dart';
@@ -15,6 +15,7 @@ import 'package:spark_flutter_app/features/auth/ui/reset_password_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/verification_view.dart';
 import 'package:spark_flutter_app/features/home/data/models/scan_response.dart';
 import 'package:spark_flutter_app/features/home/data/repos/warning_repo.dart';
+import 'package:spark_flutter_app/features/home/logic/reminder%20cubit/reminder_cubit.dart';
 import 'package:spark_flutter_app/features/home/logic/scan%20cubit/scan_cubit.dart';
 import 'package:spark_flutter_app/features/home/logic/warning%20cubit/warning_cubit.dart';
 import 'package:spark_flutter_app/features/home/ui/warning_screen.dart';
@@ -45,7 +46,6 @@ abstract class AppRouter {
     routes: [
       GoRoute(
         path: Routes.onboardingScreen,
-        // path: '/',
         builder: (context, state) => const OnboardingScreen(),
       ),
       GoRoute(
@@ -55,6 +55,7 @@ abstract class AppRouter {
               providers: [
                 BlocProvider(create: (context) => MainNavigationCubit()),
                 BlocProvider(create: (context) => ProfileCubit(getIt())),
+                BlocProvider(create: (context) => ReminderCubit(getIt())),
                 BlocProvider(create: (context) => ScanCubit(getIt())),
                 BlocProvider(create: (context) => WarningCubit(WarningRepo(getIt<ApiService>()))),
               ],
