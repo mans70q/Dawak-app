@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:spark_flutter_app/core/models/warning.dart';
+import 'package:spark_flutter_app/core/models/warning_stats.dart';
 import 'package:spark_flutter_app/core/networking/api_error_model.dart';
 import 'package:spark_flutter_app/core/networking/api_result.dart';
 import 'package:spark_flutter_app/features/home/data/repos/warning_repo.dart';
@@ -35,13 +36,14 @@ class WarningCubit extends Cubit<WarningState> {
   }
 
   Future<void> fetchWarningStats() async {
-    emit(WarningState.loading());
-    final result = await warningRepo.getWarningStats();
-    switch (result) {
-      case Success(data: final stats):
-        emit(WarningState.statsSuccess(stats));
-      case Failure(apiErrorModel: final errorModel):
-        emit(WarningState.error(errorModel));
-    }
+  emit(WarningState.loading());
+  final result = await warningRepo.getWarningStats();
+  switch (result) {
+    case Success(data: final stats):
+      emit(WarningState.statsSuccess(stats.data!));
+    case Failure(apiErrorModel: final errorModel):
+      emit(WarningState.error(errorModel));
   }
+}
+
 }

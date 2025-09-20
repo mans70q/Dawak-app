@@ -25,7 +25,7 @@ class HomeAppbar extends StatelessWidget {
           loading: () => 0,
           success: (_) => 0,
           statsSuccess: (stats) {
-              return stats['data']['unresolved'] ?? 0;
+              return stats.total ?? 0;
           },
           error: (_) => 0,
         );
