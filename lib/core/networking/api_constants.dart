@@ -5,4 +5,5 @@ class ApiConstants {
   static const String profile = '/auth/profile';
   static const String scan = '/ai/scan';
   static const String medicines = '/medicine';
+  static const String warnings = '/warnings';
 }
