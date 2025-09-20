@@ -12,20 +12,20 @@ class ReminderSection extends StatelessWidget {
   const ReminderSection({super.key});
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        SectionHeader(
-          title: "Today's Reminders",
-          onViewAll: () {
-            context.read<MainNavigationCubit>().changeTab(1);
-          },
-        ),
-        SizedBox(height: 16.h),
-        BlocBuilder<ReminderCubit, ReminderState>(
-          builder: (context, state) {
-            if (state is ReminderSuccess) {
-              final reminders = state.reminders;
-              return Padding(
+    return BlocBuilder<ReminderCubit, ReminderState>(
+      builder: (context, state) {
+        if (state is ReminderSuccess) {
+          final reminders = state.reminders;
+          return Column(
+            children: [
+              SectionHeader(
+                title: "Today's Reminders",
+                onViewAll: () {
+                  context.read<MainNavigationCubit>().changeTab(1);
+                },
+              ),
+              SizedBox(height: 16.h),
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20.w),
                 child:
                     reminders.isEmpty
@@ -48,16 +48,16 @@ class ReminderSection extends StatelessWidget {
                                 reminderWithMedicine: reminders[index],
                               ),
                         ),
-              );
-            } else if (state is ReminderError) {
-              return Center(child: Text(state.errorModel.message!));
-            }
-            return const Center(
-              child: CircularProgressIndicator(color: ColorManager.primaryBlue),
-            );
-          },
-        ),
-      ],
+              ),
+            ],
+          );
+        } else if (state is ReminderError) {
+          return Center(child: Text(state.errorModel.message!));
+        }
+        return const Center(
+          child: CircularProgressIndicator(color: ColorManager.primaryBlue),
+        );
+      },
     );
   }
 }

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
@@ -6,8 +8,9 @@ import 'package:spark_flutter_app/features/medicines/ui/widgets/add_medicine_app
 import 'package:spark_flutter_app/features/medicines/ui/widgets/add_medicine_body.dart';
 
 class AddMedicineScreen extends StatelessWidget {
-  const AddMedicineScreen({super.key, required this.scanResponse});
-  final ScanResponse scanResponse;
+  const AddMedicineScreen({super.key, this.scanResponse, this.file});
+  final ScanResponse? scanResponse;
+  final File? file;
 
   @override
   Widget build(BuildContext context) {

@@ -9,6 +9,7 @@ import 'package:spark_flutter_app/features/auth/data/models/register_response.da
 import 'package:spark_flutter_app/features/home/data/models/medicine_response.dart';
 import 'package:spark_flutter_app/features/home/data/models/profile_response.dart';
 import 'package:spark_flutter_app/features/home/data/models/scan_response.dart';
+import 'package:spark_flutter_app/features/medicines/data/models/add_medicine_response.dart';
 part 'api_service.g.dart';
 
 @RestApi(baseUrl: ApiConstants.baseUrl)
@@ -33,6 +34,18 @@ abstract class ApiService {
   @GET("${ApiConstants.medicines}/{id}")
   Future<MedicineResponse> getMedicine(@Path("id") String id);
 
+
+  @MultiPart()
+  @POST(ApiConstants.medicines)
+  Future<AddMedicineResponse> addMedicine(
+    @Part() String name,
+    @Part() String dosage,
+    @Part() String frequency,
+    @Part() String instructions,
+    @Part() String source,
+    @Part(name: "file") MultipartFile? file,
+  );
+
   @GET(ApiConstants.warnings)
   Future<List<Warning>> getWarnings(
     @Query("page") int page,
@@ -46,4 +59,5 @@ abstract class ApiService {
 
   @PATCH("${ApiConstants.warnings}/{id}/resolve")
   Future<void> resolveWarning(@Path("id") String id);
+
 }

@@ -12,6 +12,16 @@ class Validator {
     return null;
   }
 
+  static String? validateDescription(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'description is required';
+    }
+    if (value.length < 10) {
+      return 'Short description must be at least 10 characters';
+    }
+    return null;
+  }
+
   static String? validateEmailAddress(String? value) {
     if (value == null || value.isEmpty) {
       return 'Email address is required';
