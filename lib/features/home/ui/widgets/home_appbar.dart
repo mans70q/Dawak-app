@@ -42,7 +42,6 @@ class HomeAppbar extends StatelessWidget {
             ),
             onPressed: () => GoRouter.of(context).push(Routes.warningScreen),
           ),
-          Icon(Icons.notifications_none_rounded, size: 28),
         ],
       ),
     );

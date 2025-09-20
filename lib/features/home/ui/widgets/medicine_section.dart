@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spark_flutter_app/core/models/medicine.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
-import 'package:spark_flutter_app/features/home/data/models/profile_response.dart';
 import 'package:spark_flutter_app/features/home/ui/widgets/medicine_item.dart';
 import 'package:spark_flutter_app/features/home/ui/widgets/section_header.dart';
 import 'package:spark_flutter_app/features/main/logic/main_navigation_cubit.dart';
@@ -38,7 +38,7 @@ class MedicineSection extends StatelessWidget {
                   : ListView.separated(
                     shrinkWrap: true,
                     physics: const NeverScrollableScrollPhysics(),
-                    itemCount: medicines.length,
+                    itemCount: medicines.take(3).length,
                     separatorBuilder: (_, __) => SizedBox(height: 16.h),
                     itemBuilder:
                         (context, index) =>
