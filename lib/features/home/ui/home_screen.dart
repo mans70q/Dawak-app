@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:spark_flutter_app/core/theming/color_manager.dart';
+// import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 import 'package:spark_flutter_app/features/home/logic/profile%20cubit/profile_cubit.dart';
-import 'package:spark_flutter_app/features/home/logic/warning%20cubit/warning_cubit.dart';
 import 'package:spark_flutter_app/features/home/logic/reminder%20cubit/reminder_cubit.dart';
+import 'package:spark_flutter_app/features/home/logic/warning_stats_cubit/warning_stats_cubit.dart';
 import 'package:spark_flutter_app/features/home/ui/widgets/home_appbar.dart';
 import 'package:spark_flutter_app/features/home/ui/widgets/add_medicine_cards.dart';
 import 'package:spark_flutter_app/features/home/ui/widgets/medicine_section.dart';
@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   void initState() {
     super.initState();
     context.read<ProfileCubit>().getProfile();
-    context.read<WarningCubit>().fetchWarningStats();
+    context.read<WarningStatsCubit>().fetchWarningStats();
   }
 
   @override
@@ -62,12 +62,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     );
                   } else {
                     return SizedBox(
-                      height: 200.h,
-                      child: Center(
-                        child: CircularProgressIndicator(
-                          color: ColorManager.primaryBlue,
-                        ),
-                      ),
+                      // height: 200.h,
+                      // child: Center(
+                      //   child: CircularProgressIndicator(
+                      //     color: ColorManager.primaryBlue,
+                      //   ),
+                      // ),
                     );
                   }
                 },

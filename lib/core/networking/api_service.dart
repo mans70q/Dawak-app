@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:retrofit/retrofit.dart';
-import 'package:spark_flutter_app/core/models/warning.dart';
-import 'package:spark_flutter_app/core/models/warning_stats_response.dart';
+import 'package:spark_flutter_app/features/home/data/models/warning_response.dart';
+import 'package:spark_flutter_app/features/home/data/models/warning_stats_response.dart';
 import 'package:spark_flutter_app/core/networking/api_constants.dart';
 import 'package:spark_flutter_app/features/auth/data/models/login_request_body.dart';
 import 'package:spark_flutter_app/features/auth/data/models/login_response.dart';
@@ -48,7 +48,7 @@ abstract class ApiService {
   );
 
   @GET(ApiConstants.warnings)
-  Future<List<Warning>> getWarnings(
+  Future<WarningResponse> getWarnings(
     @Query("page") int page,
     @Query("limit") int limit,
     @Query("severity") String? severity,

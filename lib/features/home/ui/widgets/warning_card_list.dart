@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spark_flutter_app/features/home/ui/widgets/warning_empty_state.dart';
 import 'package:spark_flutter_app/features/home/ui/widgets/warning_item_card.dart';
+import 'package:spark_flutter_app/core/models/warning.dart';
 
 Color getTextColor(String risk) {
   switch (risk.toLowerCase()) {
@@ -16,7 +17,7 @@ Color getTextColor(String risk) {
 }
 
 class WarningCardList extends StatelessWidget {
-  final List<Map<String, dynamic>> items;
+  final List<Warning> items; 
   final String riskType;
 
   const WarningCardList({
@@ -31,7 +32,9 @@ class WarningCardList extends StatelessWidget {
         riskType.toLowerCase() == "all"
             ? items
             : items.where((item) {
-              final risk = (item['risk'] ?? '').toString().toLowerCase();
+              final risk =
+                  (item.severity ?? '')
+                      .toLowerCase(); 
               return risk == riskType.toLowerCase();
             }).toList();
 
@@ -44,11 +47,11 @@ class WarningCardList extends StatelessWidget {
       separatorBuilder: (context, index) => const SizedBox(height: 12),
       itemBuilder: (context, index) {
         final item = filteredItems[index];
-        final risk = (item['risk'] ?? '').toString();
+        final risk = item.severity ?? ''; 
 
         return WarningItemCard(
-          title: (item['title'] ?? '').toString(),
-          subtitle: (item['subtitle'] ?? '').toString(),
+          title: item.type ?? '', 
+          subtitle: item.message ?? '', 
           risk: risk,
           onView: () {
             // TODO: Handle navigate to warning details

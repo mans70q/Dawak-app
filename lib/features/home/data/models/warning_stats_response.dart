@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'warning_stats.dart';
+import '../../../../core/models/warning_stats.dart';
 
 part 'warning_stats_response.g.dart';
 

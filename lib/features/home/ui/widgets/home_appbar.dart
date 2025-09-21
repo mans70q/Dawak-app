@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spark_flutter_app/core/helpers/assets.dart';
 import 'package:spark_flutter_app/core/routing/routes.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
-import 'package:spark_flutter_app/features/home/logic/warning%20cubit/warning_cubit.dart';
+import 'package:spark_flutter_app/features/home/logic/warning_stats_cubit/warning_stats_cubit.dart';
 
 class HomeAppbar extends StatelessWidget {
   const HomeAppbar({
@@ -18,15 +18,12 @@ class HomeAppbar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<WarningCubit, WarningState>(
+    return BlocBuilder<WarningStatsCubit, WarningStatsState>(
       builder: (context, state) {
         final warningCount = state.when(
           initial: () => 0,
           loading: () => 0,
-          success: (_) => 0,
-          statsSuccess: (stats) {
-              return stats.total ?? 0;
-          },
+          success: (stats) => stats.total ?? 0,
           error: (_) => 0,
         );
 

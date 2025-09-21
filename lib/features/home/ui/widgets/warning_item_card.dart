@@ -49,7 +49,15 @@ class WarningItemCard extends StatelessWidget {
                 children: [
                   Text(title, style: Styles.font18BlackSemiBold),
                   SizedBox(height: 12.h),
-                  Text(subtitle),
+                  SizedBox(
+                    width: 250.w,
+                    child: Text(
+                      subtitle,
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: Styles.font14BlackRegular,
+                    ),
+                  ),
                 ],
               ),
             ],
