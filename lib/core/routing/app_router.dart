@@ -1,6 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:spark_flutter_app/core/di/dependency_injection.dart';
+import 'package:spark_flutter_app/core/models/medicine.dart';
 import 'package:spark_flutter_app/core/services/auth_manager.dart';
 import 'package:spark_flutter_app/core/helpers/constants.dart';
 import 'package:spark_flutter_app/core/helpers/shared_pref_helper.dart';
@@ -122,7 +123,9 @@ abstract class AppRouter {
 
       GoRoute(
         path: Routes.medicinedetailsScreen,
-        builder: (context, state) => const MedicineDetailsScreen(),
+        builder:
+            (context, state) =>
+                MedicineDetailsScreen(medicine: state.extra as Medicine),
       ),
     ],
   );
