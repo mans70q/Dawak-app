@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:spark_flutter_app/core/models/medicine.dart';
 part 'reminder.g.dart';
 
 @JsonSerializable(explicitToJson: true)
@@ -11,6 +12,7 @@ class Reminder {
   final DateTime? nextAt;
   final bool? active;
   final List<StatusHistoryEntry>? statusHistory;
+  final Medicine? medicine;
   final DateTime? createdAt;
   final DateTime? updatedAt;
 
@@ -22,6 +24,7 @@ class Reminder {
     this.nextAt,
     this.active,
     this.statusHistory,
+    this.medicine,
     this.createdAt,
     this.updatedAt,
   });

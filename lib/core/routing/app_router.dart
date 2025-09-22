@@ -13,9 +13,7 @@ import 'package:spark_flutter_app/features/auth/ui/login_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/register_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/reset_password_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/verification_view.dart';
-import 'package:spark_flutter_app/features/home/data/models/scan_response.dart';
 import 'package:spark_flutter_app/features/home/data/repos/warning_repo.dart';
-import 'package:spark_flutter_app/features/home/logic/reminder%20cubit/reminder_cubit.dart';
 import 'package:spark_flutter_app/features/home/logic/scan%20cubit/scan_cubit.dart';
 import 'package:spark_flutter_app/features/home/logic/warning_cubit/warning_cubit.dart';
 import 'package:spark_flutter_app/features/home/logic/warning_stats_cubit/warning_stats_cubit.dart';
@@ -58,7 +56,6 @@ abstract class AppRouter {
               providers: [
                 BlocProvider(create: (context) => MainNavigationCubit()),
                 BlocProvider(create: (context) => ProfileCubit(getIt())),
-                BlocProvider(create: (context) => ReminderCubit(getIt())),
                 BlocProvider(create: (context) => ScanCubit(getIt())),
                 BlocProvider(
                   create:

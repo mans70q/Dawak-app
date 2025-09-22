@@ -19,6 +19,10 @@ Reminder _$ReminderFromJson(Map<String, dynamic> json) => Reminder(
       (json['statusHistory'] as List<dynamic>?)
           ?.map((e) => StatusHistoryEntry.fromJson(e as Map<String, dynamic>))
           .toList(),
+  medicine:
+      json['medicine'] == null
+          ? null
+          : Medicine.fromJson(json['medicine'] as Map<String, dynamic>),
   createdAt:
       json['createdAt'] == null
           ? null
@@ -37,6 +41,7 @@ Map<String, dynamic> _$ReminderToJson(Reminder instance) => <String, dynamic>{
   'nextAt': instance.nextAt?.toIso8601String(),
   'active': instance.active,
   'statusHistory': instance.statusHistory?.map((e) => e.toJson()).toList(),
+  'medicine': instance.medicine?.toJson(),
   'createdAt': instance.createdAt?.toIso8601String(),
   'updatedAt': instance.updatedAt?.toIso8601String(),
 };
