@@ -11,7 +11,10 @@ class AppBody extends StatelessWidget {
     return Expanded(
       child: Stack(
         children: [
-          Container(height: 50.h, color: ColorManager.primaryBlue),
+          Container(
+            height: 50.h,
+            color: ColorManager.primaryBlue.withAlpha(200),
+          ),
           Container(
             height: double.infinity,
             width: double.infinity,
