@@ -14,6 +14,7 @@ import 'package:spark_flutter_app/features/auth/ui/login_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/register_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/reset_password_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/verification_view.dart';
+import 'package:spark_flutter_app/features/family_mode/add_family_member_screen.dart';
 import 'package:spark_flutter_app/features/family_mode/family_member_details_screen.dart';
 import 'package:spark_flutter_app/features/family_mode/family_mode_screen.dart';
 import 'package:spark_flutter_app/features/home/data/repos/warning_repo.dart';
@@ -143,6 +144,10 @@ abstract class AppRouter {
             avatarPath: extra['avatarPath']!,
           );
         },
+      ),
+      GoRoute(
+        path: Routes.addFamilyMemberScreen,
+        builder: (context, state) => const AddFamilyMemberScreen(),
       ),
     ],
   );

@@ -9,9 +9,17 @@ class Assets {
   static const String cameraLogo = 'assets/images/camera_logo.png';
   static const String appbarBackground = 'assets/images/appbar_background.png';
   static const String cardBackground = 'assets/images/card_background.png';
+  static const String addFamilyMemberIllustration =
+      'assets/images/add_family_member_illustration.png';
   // test images
   static const String testAvatarImg = 'assets/images/test_avatar_img.png';
   static const String testMedicineImg = 'assets/images/test_medicine_img.png';
+  static const String testAvatarDaughterImg =
+      'assets/images/test_avatar_daughter_img.png';
+  static const String testAvatarFatherImg =
+      'assets/images/test_avatar_father_img.png';
+  static const String testAvatarSonImg =
+      'assets/images/test_avatar_son_img.png';
   // SVG icons
   static const String homeOutlined = 'assets/svgs/home_outlined.svg';
   static const String homeFilled = 'assets/svgs/home_filled.svg';
