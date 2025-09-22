@@ -170,57 +170,61 @@ class RegisterForm extends StatelessWidget {
                               SizedBox(
                                 width: double.infinity,
                                 height: 52.h,
-                                child: BlocConsumer<
-                                  RegisterCubit,
-                                  RegisterState
-                                >(
-                                  listener: (context, state) {
-                                    if (state is RegisterSuccess) {
-                                      GoRouter.of(
-                                        context,
-                                      ).go(Routes.mainScreen);
-                                    } else if (state is RegisterError) {
-                                      showModalBottomSheet(
-                                        context: context,
-                                        builder:
-                                            (context) => Wrap(
-                                              children: [
-                                                ListTile(
-                                                  title: Text(
-                                                    state.errorModel.message!,
-                                                  ),
+                                child:
+                                    BlocConsumer<RegisterCubit, RegisterState>(
+                                      listener: (context, state) {
+                                        if (state is RegisterSuccess) {
+                                          GoRouter.of(
+                                            context,
+                                          ).go(Routes.mainScreen);
+                                        } else if (state is RegisterError) {
+                                          showModalBottomSheet(
+                                            context: context,
+                                            builder:
+                                                (context) => Wrap(
+                                                  children: [
+                                                    ListTile(
+                                                      title: Text(
+                                                        state
+                                                            .errorModel
+                                                            .message!,
+                                                      ),
+                                                    ),
+                                                  ],
                                                 ),
-                                              ],
-                                            ),
-                                      );
-                                    }
-                                  },
-                                  builder: (context, state) {
-                                    return state is RegisterLoading
-                                        ? Center(
-                                          child: CircularProgressIndicator(
-                                            color: ColorManager.primaryBlue,
-                                          ),
-                                        )
-                                        : AppButton(
-                                          text: 'Sign Up',
-                                          textStyle: Styles.font20WhiteSemiBold,
-                                          backgroundColor:
-                                              ColorManager.primaryBlue,
-                                          onPressed: () {
-                                            if (context
-                                                .read<RegisterCubit>()
-                                                .formKey
-                                                .currentState!
-                                                .validate()) {
-                                              context
-                                                  .read<RegisterCubit>()
-                                                  .register();
-                                            }
-                                          },
-                                        );
-                                  },
-                                ),
+                                          );
+                                        }
+                                      },
+                                      builder: (context, state) {
+                                        return state is RegisterLoading
+                                            ? Center(
+                                              child: CircularProgressIndicator(
+                                                color: ColorManager.primaryBlue,
+                                              ),
+                                            )
+                                            : Hero(
+                                              tag: 'auth-btn',
+                                              child: AppButton(
+                                                text: 'Sign Up',
+                                                textStyle:
+                                                    Styles.font20WhiteSemiBold,
+                                                backgroundColor:
+                                                    ColorManager.primaryBlue,
+                                                onPressed: () {
+                                                  if (context
+                                                      .read<RegisterCubit>()
+                                                      .formKey
+                                                      .currentState!
+                                                      .validate()) {
+                                                    context
+                                                        .read<RegisterCubit>()
+                                                        .register();
+                                                  }
+                                                },
+                                              ),
+                                            );
+                                      },
+                                    ),
                               ),
                               SizedBox(height: 24.h),
                               OrWith(title: "or Sign Up With"),

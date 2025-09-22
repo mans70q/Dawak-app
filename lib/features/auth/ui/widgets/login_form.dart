@@ -134,22 +134,26 @@ class LoginForm extends StatelessWidget {
                                             color: ColorManager.primaryBlue,
                                           ),
                                         )
-                                        : AppButton(
-                                          text: 'Login',
-                                          textStyle: Styles.font20WhiteSemiBold,
-                                          backgroundColor:
-                                              ColorManager.primaryBlue,
-                                          onPressed: () {
-                                            if (context
-                                                .read<LoginCubit>()
-                                                .formKey
-                                                .currentState!
-                                                .validate()) {
-                                              context
+                                        : Hero(
+                                          tag: 'auth-btn',
+                                          child: AppButton(
+                                            text: 'Login',
+                                            textStyle:
+                                                Styles.font20WhiteSemiBold,
+                                            backgroundColor:
+                                                ColorManager.primaryBlue,
+                                            onPressed: () {
+                                              if (context
                                                   .read<LoginCubit>()
-                                                  .login();
-                                            }
-                                          },
+                                                  .formKey
+                                                  .currentState!
+                                                  .validate()) {
+                                                context
+                                                    .read<LoginCubit>()
+                                                    .login();
+                                              }
+                                            },
+                                          ),
                                         );
                                   },
                                 ),

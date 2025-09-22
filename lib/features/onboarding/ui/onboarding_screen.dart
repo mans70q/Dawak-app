@@ -61,15 +61,22 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     setState(() => _currentPage = index);
                   },
                   itemCount: 3,
-                  itemBuilder: (_, index) => OnboardingPage(pageIndex: index),
+                  itemBuilder:
+                      (_, index) => OnboardingPage(
+                        pageIndex: index,
+                        currentPage: _currentPage,
+                      ),
                 ),
               ),
               SizedBox(height: 40.h),
               OnboardingIndicator(controller: _pageController),
               SizedBox(height: 40.h),
-              OnboardingFooterButton(
-                currentPage: _currentPage,
-                pageController: _pageController,
+              Hero(
+                tag: 'auth-btn',
+                child: OnboardingFooterButton(
+                  currentPage: _currentPage,
+                  pageController: _pageController,
+                ),
               ),
             ],
           ),

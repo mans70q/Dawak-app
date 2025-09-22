@@ -29,7 +29,8 @@ class Warning {
 
   factory Warning.fromJson(Map<String, dynamic> json) {
     Medicine? med;
-    if (json['medicineId'] != null && json['medicineId'] is Map<String, dynamic>) {
+    if (json['medicineId'] != null &&
+        json['medicineId'] is Map<String, dynamic>) {
       med = Medicine.fromJson(json['medicineId']);
     }
 
@@ -41,8 +42,10 @@ class Warning {
       message: json['message'] as String?,
       type: json['type'] as String?,
       resolved: json['resolved'] as bool?,
-      createdAt: json['createdAt'] == null ? null : DateTime.parse(json['createdAt']),
-      updatedAt: json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt']),
+      createdAt:
+          json['createdAt'] == null ? null : DateTime.parse(json['createdAt']),
+      updatedAt:
+          json['updatedAt'] == null ? null : DateTime.parse(json['updatedAt']),
     );
   }
 

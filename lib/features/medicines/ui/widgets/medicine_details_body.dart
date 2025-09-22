@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:spark_flutter_app/core/models/medicine.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 
 class MedicineDetailsBody extends StatelessWidget {
-  const MedicineDetailsBody({super.key});
+  const MedicineDetailsBody({super.key, required this.medicine});
+  final Medicine medicine;
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +17,10 @@ class MedicineDetailsBody extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Panadol 500mg', style: Styles.font24BlackSemiBold),
+            Text(
+              '${medicine.name} ${medicine.dosage}',
+              style: Styles.font24BlackSemiBold,
+            ),
             const SizedBox(height: 8.0),
             Text(
               'Paracetamol',

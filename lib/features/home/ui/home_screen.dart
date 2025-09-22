@@ -59,7 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               } else {
                 return SizedBox(
-                  height: 200.h,
+                  height: MediaQuery.of(context).size.height,
                   child: Center(
                     child: CircularProgressIndicator(
                       color: ColorManager.primaryBlue,

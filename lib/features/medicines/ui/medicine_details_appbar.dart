@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:spark_flutter_app/core/helpers/assets.dart';
+import 'package:spark_flutter_app/core/models/medicine.dart';
 import 'package:spark_flutter_app/core/theming/color_manager.dart';
 
 class MedicineDetailsAppbar extends StatelessWidget {
-  const MedicineDetailsAppbar({super.key});
+  const MedicineDetailsAppbar({super.key, required this.medicine});
+  final Medicine medicine;
 
   @override
   Widget build(BuildContext context) {
@@ -44,10 +46,24 @@ class MedicineDetailsAppbar extends StatelessWidget {
             ),
           ),
           Positioned(
-            top: 50.h,
+            top: 80.h,
             left: 50.w,
             right: 50.w,
-            child: Image.asset(Assets.testMedicineImg),
+            child: Hero(
+              tag: '${medicine.id}-img',
+              child:
+                  medicine.imageUrl == null
+                      ? Image.asset(
+                        Assets.testMedicineImg,
+                        fit: BoxFit.contain,
+                        height: 220.h,
+                      )
+                      : Image.network(
+                        medicine.imageUrl!,
+                        fit: BoxFit.contain,
+                        height: 220.h,
+                      ),
+            ),
           ),
         ],
       ),

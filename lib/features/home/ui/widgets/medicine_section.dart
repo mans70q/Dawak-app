@@ -28,7 +28,7 @@ class MedicineSection extends StatelessWidget {
               medicines.isEmpty
                   ? Center(
                     child: Container(
-                      padding: EdgeInsets.all(50),
+                      padding: const EdgeInsets.all(50),
                       child: Text(
                         'No medicines yet',
                         style: Styles.font16BlackSemiBold,
@@ -40,9 +40,24 @@ class MedicineSection extends StatelessWidget {
                     physics: const NeverScrollableScrollPhysics(),
                     itemCount: medicines.take(3).length,
                     separatorBuilder: (_, __) => SizedBox(height: 16.h),
-                    itemBuilder:
-                        (context, index) =>
-                            MedicineItem(medicine: medicines[index]),
+                    itemBuilder: (context, index) {
+                      final medicine = medicines[index];
+                      return TweenAnimationBuilder<double>(
+                        tween: Tween(begin: 0, end: 1),
+                        duration: Duration(milliseconds: 400),
+                        curve: Curves.easeOut,
+                        builder: (context, value, child) {
+                          return Opacity(
+                            opacity: value,
+                            child: Transform.translate(
+                              offset: Offset(0, 20 * (1 - value)),
+                              child: child,
+                            ),
+                          );
+                        },
+                        child: MedicineItem(medicine: medicine),
+                      );
+                    },
                   ),
         ),
       ],
