@@ -23,19 +23,23 @@ class MedicineGridItem extends StatelessWidget {
       ),
       child: Column(
         children: [
-          medicine.imageUrl == null
-              ? Image.asset(
-                Assets.testMedicineImg,
-                height: 65.h,
-                width: 65.w,
-                fit: BoxFit.cover,
-              )
-              : Image.network(
-                medicine.imageUrl!,
-                height: 65.h,
-                width: 65.w,
-                fit: BoxFit.contain,
-              ),
+          Hero(
+            tag: '${medicine.id!}-img',
+            child:
+                medicine.imageUrl == null
+                    ? Image.asset(
+                      Assets.testMedicineImg,
+                      height: 65.h,
+                      width: 65.w,
+                      fit: BoxFit.cover,
+                    )
+                    : Image.network(
+                      medicine.imageUrl!,
+                      height: 65.h,
+                      width: 65.w,
+                      fit: BoxFit.contain,
+                    ),
+          ),
 
           SizedBox(height: 12.h),
           Text(medicine.name!, style: Styles.font16BlackSemiBold),
