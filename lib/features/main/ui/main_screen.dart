@@ -5,13 +5,14 @@ import 'package:spark_flutter_app/features/main/logic/main_navigation_cubit.dart
 import 'package:spark_flutter_app/features/main/ui/widgets/custom_bottom_nav.dart';
 import 'package:spark_flutter_app/features/medicines/ui/medicines_screen.dart';
 import 'package:spark_flutter_app/features/profile/ui/profile_screen.dart';
+import 'package:spark_flutter_app/features/reminders/ui/reminders_screen.dart';
 
 class MainScreen extends StatelessWidget {
   const MainScreen({super.key});
 
   final List<Widget> _screens = const [
     HomeScreen(),
-    HomeScreen(), //testing
+    RemindersScreen(),
     MedicinesScreen(),
     ProfileScreen(),
   ];
