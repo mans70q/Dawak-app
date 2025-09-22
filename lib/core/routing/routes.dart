@@ -9,4 +9,6 @@ abstract class Routes {
   static const String warningScreen = '/warning_screen';
   static const String addMedicineScreen = '/add_medicine_screen';
   static const String medicinedetailsScreen = '/medicinedetailsScreen';
+  static const String faimlyModeScreen = '/family_mode_screen';
+  static const String familyMemberDetailsScreen = '/family_member_details_screen';
 }

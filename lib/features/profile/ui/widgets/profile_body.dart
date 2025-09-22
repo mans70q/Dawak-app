@@ -39,6 +39,13 @@ class ProfileBody extends StatelessWidget {
                   SettingsRow(icon: Icons.lock_outline, title: 'Privacy'),
                   SettingsRow(icon: Icons.language_rounded, title: 'Language'),
                   SettingsRow(
+                    icon: Icons.family_restroom,
+                    title: 'Family Mode',
+                    onPressed: () {
+                      GoRouter.of(context).push(Routes.faimlyModeScreen);
+                    },
+                  ),
+                  SettingsRow(
                     icon: Icons.logout_outlined,
                     title: 'Logout',
                     color: Colors.redAccent,
@@ -52,7 +59,7 @@ class ProfileBody extends StatelessWidget {
                 ],
               ),
             ),
-            const SectionTitle(title: 'Family Mode'),
+            // const SectionTitle(title: 'Family Mode'),
           ],
         ),
       ),

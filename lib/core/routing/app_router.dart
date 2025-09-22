@@ -13,6 +13,8 @@ import 'package:spark_flutter_app/features/auth/ui/login_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/register_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/reset_password_view.dart';
 import 'package:spark_flutter_app/features/auth/ui/verification_view.dart';
+import 'package:spark_flutter_app/features/family_mode/family_member_details_screen.dart';
+import 'package:spark_flutter_app/features/family_mode/family_mode_screen.dart';
 import 'package:spark_flutter_app/features/home/data/repos/warning_repo.dart';
 import 'package:spark_flutter_app/features/home/logic/scan%20cubit/scan_cubit.dart';
 import 'package:spark_flutter_app/features/home/logic/warning_cubit/warning_cubit.dart';
@@ -123,6 +125,21 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.medicinedetailsScreen,
         builder: (context, state) => const MedicineDetailsScreen(),
+      ),
+      GoRoute(
+        path: Routes.faimlyModeScreen,
+        builder: (context, state) => FamilyModeScreen(),
+      ),
+      GoRoute(
+        path: Routes.familyMemberDetailsScreen,
+        builder: (context, state) {
+          final extra = state.extra as Map<String, String>;
+          return FamilyMemberDetailsScreen(
+            name: extra['name']!,
+            relation: extra['relation']!,
+            avatarPath: extra['avatarPath']!,
+          );
+        },
       ),
     ],
   );

@@ -13,6 +13,11 @@ class Styles {
     color: Colors.white,
     fontWeight: FontWeight.w400,
   );
+  static TextStyle font12BlackRegular = TextStyle(
+    fontSize: 12.sp,
+    color: Colors.black,
+    fontWeight: FontWeight.w400,
+  );
   static TextStyle font14BlackRegular = TextStyle(
     fontSize: 14.sp,
     color: Colors.black,
