@@ -92,7 +92,7 @@ class _AddMedicineBodyState extends State<AddMedicineBody> {
                           alignment: Alignment.centerLeft,
                           child: Text(
                             'Medication Name',
-                            style: Styles.font14BlackRegular,
+                            style: Styles.font16BlackSemiBold,
                           ),
                         ),
                         SizedBox(height: 10.h),
@@ -105,18 +105,150 @@ class _AddMedicineBodyState extends State<AddMedicineBody> {
                         SizedBox(height: 20.h),
                         Align(
                           alignment: Alignment.centerLeft,
-                          child: Text(
-                            'Description',
-                            style: Styles.font14BlackRegular,
+                          child: Row(
+                            spacing: 5,
+                            children: [
+                              Icon(
+                                Icons.access_alarms_rounded,
+                                color: ColorManager.primaryBlue,
+                                size: 20,
+                              ),
+                              Text(
+                                'Frequency',
+                                style: Styles.font16BlackSemiBold,
+                              ),
+                            ],
                           ),
                         ),
                         SizedBox(height: 10.h),
-                        CustomTextFormField(
-                          hintText: 'Medicine description',
-                          validator: Validator.validateDescription,
-                          isFinalField: true,
-                          controller: descriptionController,
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            spacing: 5,
+                            children: [
+                              Icon(
+                                Icons.circle,
+                                color: Colors.black,
+                                size: 10.r,
+                              ),
+                              Text(
+                                widget.scanResponse!.data!.frequency!,
+                                style: Styles.font14BlackRegular,
+                              ),
+                            ],
+                          ),
                         ),
+                        SizedBox(height: 20.h),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Row(
+                            spacing: 5,
+                            children: [
+                              Icon(
+                                Icons.warning_amber_rounded,
+                                color: Colors.orange[300],
+                                size: 20,
+                              ),
+                              Text(
+                                'Possible side effects',
+                                style: Styles.font16BlackSemiBold,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 10.h),
+                        ListView.separated(
+                          padding: EdgeInsets.zero,
+                          itemCount:
+                              widget.scanResponse!.data!.sideEffects!.length,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          separatorBuilder:
+                              (context, index) => SizedBox(height: 5.h),
+                          itemBuilder: (context, index) {
+                            return Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              spacing: 5,
+                              children: [
+                                Padding(
+                                  padding: EdgeInsets.only(top: 5),
+                                  child: Icon(
+                                    Icons.circle,
+                                    color: Colors.black,
+                                    size: 10.r,
+                                  ),
+                                ),
+                                Expanded(
+                                  child: Text(
+                                    widget
+                                        .scanResponse!
+                                        .data!
+                                        .sideEffects![index],
+                                    style: Styles.font14BlackRegular,
+                                    softWrap: true,
+                                  ),
+                                ),
+                              ],
+                            );
+                          },
+                        ),
+                        SizedBox(height: 20.h),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Row(
+                            spacing: 5,
+                            children: [
+                              Icon(
+                                Icons.content_paste_rounded,
+                                color: ColorManager.primaryBlue,
+                                size: 20,
+                              ),
+                              Text(
+                                'Instructions',
+                                style: Styles.font16BlackSemiBold,
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(height: 10.h),
+                        Align(
+                          alignment: Alignment.centerLeft,
+                          child: Row(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            spacing: 5,
+                            children: [
+                              Padding(
+                                padding: EdgeInsets.only(top: 5),
+                                child: Icon(
+                                  Icons.circle,
+                                  color: Colors.black,
+                                  size: 10.r,
+                                ),
+                              ),
+                              Expanded(
+                                child: Text(
+                                  widget.scanResponse!.data!.instructions!,
+                                  style: Styles.font14BlackRegular,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        // Align(
+                        //   alignment: Alignment.centerLeft,
+                        //   child: Text(
+                        //     'Description',
+                        //     style: Styles.font14BlackRegular,
+                        //   ),
+                        // ),
+                        // SizedBox(height: 10.h),
+                        // CustomTextFormField(
+                        //   hintText: 'Medicine description',
+                        //   validator: Validator.validateDescription,
+                        //   isFinalField: true,
+                        //   controller: descriptionController,
+                        // ),
                         SizedBox(height: 20.h),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -125,7 +257,7 @@ class _AddMedicineBodyState extends State<AddMedicineBody> {
                               alignment: Alignment.centerLeft,
                               child: Text(
                                 'Reminder Time',
-                                style: Styles.font14BlackRegular,
+                                style: Styles.font16BlackSemiBold,
                               ),
                             ),
                             SizedBox(
