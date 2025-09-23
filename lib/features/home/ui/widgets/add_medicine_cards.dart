@@ -11,10 +11,12 @@ import 'package:spark_flutter_app/core/theming/color_manager.dart';
 import 'package:spark_flutter_app/core/theming/styles.dart';
 import 'package:spark_flutter_app/core/widgets/app_button.dart';
 import 'package:spark_flutter_app/features/home/logic/scan%20cubit/scan_cubit.dart';
+import 'package:spark_flutter_app/features/medicines/data/models/add_medicine_args.dart';
 
 class AddMedicineCards extends StatelessWidget {
   AddMedicineCards({super.key});
   final ImageService imageService = ImageService();
+  late final File? image;
 
   void pickImage(BuildContext context) async {
     File? image;
@@ -50,6 +52,7 @@ class AddMedicineCards extends StatelessWidget {
     if (image != null) {
       if (context.mounted) {
         context.read<ScanCubit>().uploadImage(image!);
+        image = image;
       }
     }
   }
@@ -98,7 +101,10 @@ class AddMedicineCards extends StatelessWidget {
                         if (state is ScanSuccess) {
                           GoRouter.of(context).push(
                             Routes.addMedicineScreen,
-                            extra: state.scanResponse,
+                            extra: AddMedicineArgs(
+                              file: image,
+                              scanResponse: state.scanResponse,
+                            ),
                           );
                         } else if (state is ScanError) {
                           showModalBottomSheet(

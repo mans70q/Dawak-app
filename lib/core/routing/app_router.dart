@@ -110,15 +110,12 @@ abstract class AppRouter {
       GoRoute(
         path: Routes.addMedicineScreen,
         builder: (context, state) {
-          final args =
-              state.extra is AddMedicineArgs
-                  ? state.extra as AddMedicineArgs
-                  : null;
+          final args = state.extra as AddMedicineArgs;
           return BlocProvider(
             create: (context) => AddMedicineCubit(getIt()),
             child: AddMedicineScreen(
-              scanResponse: args?.scanResponse,
-              file: args?.file,
+              scanResponse: args.scanResponse,
+              file: args.file,
             ),
           );
         },
