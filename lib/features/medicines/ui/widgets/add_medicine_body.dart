@@ -53,8 +53,9 @@ class _AddMedicineBodyState extends State<AddMedicineBody> {
         name: nameController.text,
         dosage: '100mg',
         frequency: '${_selectedDates.length}x/day',
-        instructions: descriptionController.text,
+        instructions: '',
         source: widget.file == null ? 'manual' : 'ai',
+        scanData: widget.scanResponse!.data!,
       );
       context.read<AddMedicineCubit>().addMedicine(requestBody, widget.file);
     }

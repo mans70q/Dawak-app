@@ -1,4 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
+import 'package:spark_flutter_app/features/home/data/models/scan_response.dart';
 
 part 'add_medicine_request_body.g.dart';
 
@@ -9,8 +10,10 @@ class AddMedicineRequestBody {
   final String frequency;
   final String instructions;
   final String source;
+  final ScanData scanData;
 
   AddMedicineRequestBody({
+    required this.scanData,
     required this.name,
     required this.dosage,
     required this.frequency,

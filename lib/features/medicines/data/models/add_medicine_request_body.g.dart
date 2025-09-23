@@ -9,6 +9,7 @@ part of 'add_medicine_request_body.dart';
 AddMedicineRequestBody _$AddMedicineRequestBodyFromJson(
   Map<String, dynamic> json,
 ) => AddMedicineRequestBody(
+  scanData: ScanData.fromJson(json['scanData'] as Map<String, dynamic>),
   name: json['name'] as String,
   dosage: json['dosage'] as String,
   frequency: json['frequency'] as String,
@@ -24,4 +25,5 @@ Map<String, dynamic> _$AddMedicineRequestBodyToJson(
   'frequency': instance.frequency,
   'instructions': instance.instructions,
   'source': instance.source,
+  'scanData': instance.scanData,
 };

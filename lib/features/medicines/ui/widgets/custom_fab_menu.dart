@@ -121,7 +121,9 @@ class _CustomFabMenuState extends State<CustomFabMenu> {
                   svgIcon: Assets.manualEntry,
                   text: "Manual Entry",
                   onTap: () {
-                    GoRouter.of(context).push(Routes.addMedicineScreen);
+                    //TODO: Add manual entry
+
+                    // GoRouter.of(context).push(Routes.addMedicineScreen);
                   },
                 ),
               ],
