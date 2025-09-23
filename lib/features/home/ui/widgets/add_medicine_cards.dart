@@ -16,7 +16,7 @@ import 'package:spark_flutter_app/features/medicines/data/models/add_medicine_ar
 class AddMedicineCards extends StatelessWidget {
   AddMedicineCards({super.key});
   final ImageService imageService = ImageService();
-  late final File? image;
+  late final File? imageFile;
 
   void pickImage(BuildContext context) async {
     File? image;
@@ -52,7 +52,7 @@ class AddMedicineCards extends StatelessWidget {
     if (image != null) {
       if (context.mounted) {
         context.read<ScanCubit>().uploadImage(image!);
-        image = image;
+        imageFile = image;
       }
     }
   }
@@ -102,7 +102,7 @@ class AddMedicineCards extends StatelessWidget {
                           GoRouter.of(context).push(
                             Routes.addMedicineScreen,
                             extra: AddMedicineArgs(
-                              file: image,
+                              file: imageFile,
                               scanResponse: state.scanResponse,
                             ),
                           );
