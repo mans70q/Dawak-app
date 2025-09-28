@@ -1,4 +1,3 @@
-# spark_flutter_app
 
 A Flutter application designed to simplify medication management and improve adherence through innovative features.
 
@@ -17,40 +16,40 @@ The `spark_flutter_app` leverages technologies like Computer Vision (CV) and Opt
 ## Screenshots
 
 ### Login Screen
+<img width="300" height="600" alt="Screenshot_1759057041" src="https://github.com/user-attachments/assets/1604b35a-2228-4cb8-8d74-0de906ed06b8" />
 
-<img width="300" height="600" alt="Login Screen" src="./assets/screenshots/login_screen.png" />
 
 ### Home Screen
+<img width="300" height="600" alt="Screenshot_1759057085" src="https://github.com/user-attachments/assets/9a0e4037-ffa5-4bcd-9796-2a6b6eae7ded" />
 
-<img width="300" height="600" alt="Home Screen" src="./assets/screenshots/home_screen.png" />
 
 ### Medicines Screen
+<img width="300" height="600" alt="Screenshot_1759057105" src="https://github.com/user-attachments/assets/daf16973-240e-4a08-bdbb-8244fe055e9a" />
 
-<img width="300" height="600" alt="Medicines Screen" src="./assets/screenshots/medicines_screen.png" />
 
 ### Medicine Details Screen
+<img width="300" height="600" alt="Screenshot_1759057113" src="https://github.com/user-attachments/assets/52a1b844-7949-4e8c-a4df-cbac8c679b0e" />
 
-<img width="300" height="600" alt="Medicine Details Screen" src="./assets/screenshots/medicine_details_screen.png" />
 
 ### Reminders Screen
+<img width="300" height="600" alt="Screenshot_1759057102" src="https://github.com/user-attachments/assets/160864a7-a992-46a9-a498-8a20d9097d01" />
 
-<img width="300" height="600" alt="Reminders Screen" src="./assets/screenshots/reminders_screen.png" />
 
 ### Warning Screen
+<img width="300" height="600" alt="Screenshot_1759057089" src="https://github.com/user-attachments/assets/ed88e2c3-f751-43d6-9a15-bee944fea066" />
 
-<img width="300" height="600" alt="Warning Screen" src="./assets/screenshots/warning_screen.png" />
 
 ### Add Family Member Screen
+<img width="300" height="600" alt="Screenshot_1759057149" src="https://github.com/user-attachments/assets/5fb9a09d-b591-4f71-b348-411bac2925e8" />
 
-<img width="300" height="600" alt="Add Family Member Screen" src="./assets/screenshots/add_family_member_screen.png" />
 
 ### Family Mode Screen
+<img width="300" height="600" alt="Screenshot_1759057141" src="https://github.com/user-attachments/assets/51ed26e1-21da-4a75-81ac-dd6c76f56f54" />
 
-<img width="300" height="600" alt="Family Mode Screen" src="./assets/screenshots/family_mode_screen.png" />
 
 ### Profile Screen
+<img width="300" height="600" alt="Screenshot_1759057119" src="https://github.com/user-attachments/assets/e3f4f0df-6049-4fb5-b413-692295fcdcae" />
 
-<img width="300" height="600" alt="Profile Screen" src="./assets/screenshots/profile_screen.png" />
 
 ## Purpose
 
