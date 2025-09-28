@@ -12,6 +12,45 @@ The `spark_flutter_app` leverages technologies like Computer Vision (CV) and Opt
 - **Drug–Drug Interaction Checker**: Alerts users about dangerous medication combinations.
 - **Smart Reminders**: Suggests dose schedules with reliable notifications and adherence tracking.
 - **Side-Effect Sheets**: Displays common and serious side effects, highlighting red-flag symptoms.
+- **Family Mode**: Manage medications for family members and track their adherence.
+
+## Screenshots
+
+### Login Screen
+
+<img width="300" height="600" alt="Login Screen" src="./assets/screenshots/login_screen.png" />
+
+### Home Screen
+
+<img width="300" height="600" alt="Home Screen" src="./assets/screenshots/home_screen.png" />
+
+### Medicines Screen
+
+<img width="300" height="600" alt="Medicines Screen" src="./assets/screenshots/medicines_screen.png" />
+
+### Medicine Details Screen
+
+<img width="300" height="600" alt="Medicine Details Screen" src="./assets/screenshots/medicine_details_screen.png" />
+
+### Reminders Screen
+
+<img width="300" height="600" alt="Reminders Screen" src="./assets/screenshots/reminders_screen.png" />
+
+### Warning Screen
+
+<img width="300" height="600" alt="Warning Screen" src="./assets/screenshots/warning_screen.png" />
+
+### Add Family Member Screen
+
+<img width="300" height="600" alt="Add Family Member Screen" src="./assets/screenshots/add_family_member_screen.png" />
+
+### Family Mode Screen
+
+<img width="300" height="600" alt="Family Mode Screen" src="./assets/screenshots/family_mode_screen.png" />
+
+### Profile Screen
+
+<img width="300" height="600" alt="Profile Screen" src="./assets/screenshots/profile_screen.png" />
 
 ## Purpose
 

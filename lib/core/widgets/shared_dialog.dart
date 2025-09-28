@@ -30,7 +30,7 @@ class SharedDialog {
                     height: 80.h,
                     width: 80.w,
                     decoration: BoxDecoration(
-                      color: iconColor.withOpacity(0.2),
+                      color: iconColor.withAlpha(30),
                       borderRadius: BorderRadius.circular(15),
                     ),
                     child: Icon(icon, size: 48, color: iconColor),
